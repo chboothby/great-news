@@ -20,3 +20,12 @@ export const getArticles = (topic) => {
       return articles;
     });
 };
+
+export const getPreview = (article_id) => {
+  return newsApi
+    .get(`/articles/${article_id}`)
+    .then(({ data: { article } }) => {
+      const preview = `${article.body.slice(0, 140)}...`;
+      return preview;
+    });
+};

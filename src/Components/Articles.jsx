@@ -1,25 +1,44 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import { getArticles } from "./api";
+import ArticleCard from "./ArticleCard";
 
-function Articles({ topic_slug }) {
-  const [articles, setArticles] = useState([]);
-  const topic = topic_slug;
-
-  useEffect(() => {
-    getArticles(topic).then((response) => {
-      setArticles(response);
+class Articles extends React.Component {
+  state = {
+    articles: [],
+    isLoading: true,
+  };
+  componentDidMount() {
+    const topic = this.props.topic_slug;
+    console.log(topic);
+    getArticles(topic).then((articles) => {
+      console.log(articles);
+      this.setState({ articles, isLoading: false });
     });
-  }, [topic]);
+  }
 
-  return (
-    <section className="main">
-      <ul className="articlesList">
-        {articles.map((article) => {
-          return <li key={article.article_id}>{article.title}</li>;
-        })}
-      </ul>
-    </section>
-  );
+  componentDidUpdate(prevProps, prevState) {
+    const newTopic = prevProps.topic_slug !== this.props.topic_slug;
+    if (newTopic) {
+      getArticles(this.props.topic_slug).then((articles) => {
+        this.setState({ articles });
+      });
+    }
+  }
+  render() {
+    const { articles, isLoading } = this.state;
+    if (isLoading) {
+      return <p>Loading articles...</p>;
+    }
+    return (
+      <section className="main">
+        <ul>
+          {articles.map((article) => {
+            return <ArticleCard key={article.article_id} article={article} />;
+          })}
+        </ul>
+      </section>
+    );
+  }
 }
 
 export default Articles;
