@@ -2,8 +2,21 @@ import axios from "axios";
 const newsApi = axios.create({
   baseURL: "https://backend-news-site.herokuapp.com/api",
 });
+
 export const getTopics = () => {
   return newsApi.get("/topics").then(({ data: { topics } }) => {
     return topics;
   });
+};
+
+export const getArticles = (topic) => {
+  return newsApi
+    .get("/articles", {
+      params: {
+        topic,
+      },
+    })
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
 };
