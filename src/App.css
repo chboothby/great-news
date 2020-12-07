@@ -7,10 +7,16 @@
 .App {
   margin: 0 auto;
   max-width: 800px;
+  background-color: #b19f9e;
 }
 
 header {
   height: 20vh;
   font-size: 3rem;
   text-align: center;
+  border: 1px solid black;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
 }

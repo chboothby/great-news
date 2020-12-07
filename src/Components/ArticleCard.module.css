@@ -1,0 +1,21 @@
+li {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+.articlePreview {
+  border: 1px solid black;
+  width: 65%;
+  padding: 1rem;
+}
+
+.articleMetrics {
+  border: 1px solid black;
+  width: 30%;
+  justify-self: flex-end;
+  padding: 1rem;
+  display: flex;
+}

@@ -1,0 +1,20 @@
+.navBar {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.all {
+  align-self: flex-start;
+}
+
+.topics {
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+.topic {
+  padding: 0 1rem;
+}
