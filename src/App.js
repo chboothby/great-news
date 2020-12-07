@@ -2,6 +2,8 @@ import "./App.css";
 import Header from "./Components/Header";
 import Nav from "./Components/Nav";
 import Articles from "./Components/Articles";
+import Article from "./Components/Article";
+
 import { Router } from "@reach/router";
 
 function App() {
@@ -9,9 +11,12 @@ function App() {
     <div className="App">
       <Header />
       <Nav />
+
       <Router>
         <Articles path="/articles" />
-        <Articles path="/articles/:topic_slug" />
+
+        <Articles path="/articles/topics/:topic_slug" />
+        <Article path="/articles/:article_id" />
       </Router>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPreview } from "./api";
 import styles from "./ArticleCard.module.css";
+import { Link } from "@reach/router";
 
 function ArticleCard({ article }) {
   const [preview, setPreview] = useState("");
@@ -16,7 +17,13 @@ function ArticleCard({ article }) {
       <section className={styles.articlePreview}>
         <h2>{article.title}</h2>
         <h3>By: {article.author}</h3>
-        <p>{preview}</p>
+        <p>
+          {preview}
+          <span>
+            {" "}
+            <Link to={`/articles/${article.article_id}`}>see more</Link>
+          </span>
+        </p>
       </section>
       <section className={styles.articleMetrics}>
         <ul>

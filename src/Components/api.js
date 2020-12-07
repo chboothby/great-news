@@ -29,3 +29,11 @@ export const getPreview = (article_id) => {
       return preview;
     });
 };
+
+export const getArticleById = (article_id) => {
+  return newsApi
+    .get(`/articles/${article_id}`)
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};

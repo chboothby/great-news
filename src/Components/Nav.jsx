@@ -22,7 +22,7 @@ function Nav() {
           return (
             <Link
               className={styles.topic}
-              to={`/articles/${topic.slug}`}
+              to={`/articles/topics/${topic.slug}`}
               key={`${topic.slug}`}
             >
               {topic.slug}
