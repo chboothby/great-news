@@ -63,7 +63,7 @@ class Article extends React.Component {
             </span>
             <Voting id={article.article_id} incVotes={this.incVotes} />
             <PostComment />
-            <AllComments />
+            <AllComments id={article.article_id} />
           </div>
         </section>
       );

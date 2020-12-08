@@ -41,3 +41,11 @@ export const getArticleById = (article_id) => {
 export const addVote = (article_id, votes) => {
   return newsApi.patch(`/articles/${article_id}`, { inc_votes: votes });
 };
+
+export const getArticleComments = (article_id, sort_by, order) => {
+  return newsApi
+    .get(`/articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
+};
