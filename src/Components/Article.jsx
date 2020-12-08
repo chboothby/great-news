@@ -1,5 +1,6 @@
 import { getArticleById } from "./api";
 import Loading from "./Loading";
+import { BiCommentDetail, BiUpvote } from "react-icons/bi";
 import Voting from "./Voting";
 
 const { useState, useEffect } = require("react");
@@ -27,8 +28,13 @@ function Article({ article_id }) {
           <p>{article.body}</p>
         </div>
         <div classNae="articleMetrics">
-          <p>comments: {article.comment_count}</p>
-          <p>votes: {article.votes}</p>
+          <p>
+            <BiUpvote />
+            {article.votes}
+          </p>
+          <p>
+            <BiCommentDetail /> {article.comment_count}
+          </p>
         </div>
         <Voting />
       </section>
