@@ -2,6 +2,21 @@ import { GrLike, GrDislike } from "react-icons/gr";
 import { FiHeart } from "react-icons/fi";
 import { useState } from "react";
 import { addVote } from "./api";
+import styled from "styled-components";
+const Button = styled.button`
+  border: 1px solid black;
+  border-radius: 20%;
+  height: 45px;
+  margin: 1rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  background: ${(props) => (props.clicked ? "purple" : "transparent")};
+  color: ${(props) => (props.clicked ? "grey" : "black")};
+
+  &&:hover {
+    opacity: 0.7;
+  }
+`;
 
 function Voting({ incVotes, id }) {
   const [superLike, setSuperLike] = useState(false);
@@ -46,27 +61,30 @@ function Voting({ incVotes, id }) {
 
   return (
     <section className="votingBar">
-      <button
+      <Button
+        clicked={superLike}
         onClick={() => {
           handleClick(10);
         }}
       >
         <FiHeart />
-      </button>
-      <button
+      </Button>
+      <Button
+        clicked={like}
         onClick={() => {
           handleClick(1);
         }}
       >
         <GrLike />
-      </button>
-      <button
+      </Button>
+      <Button
+        clicked={dislike}
         onClick={() => {
           handleClick(-1);
         }}
       >
         <GrDislike />
-      </button>
+      </Button>
     </section>
   );
 }
