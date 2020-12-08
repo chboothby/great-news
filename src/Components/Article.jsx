@@ -29,11 +29,15 @@ class Article extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const newProps = prevProps.article_id !== this.props.article_id;
+    const changedVote = prevState.article.votes !== this.state.article.votes;
     if (newProps) {
       getArticleById(this.props.article_id).then((article) => {
         this.setState({ article });
       });
     }
+    // }
+    // if (changedVote) {
+    // }
   }
 
   render() {
@@ -52,19 +56,32 @@ class Article extends React.Component {
             <p>{article.body}</p>
           </div>
           <div className="articleMetrics">
-            <p>
+            <span>
               <BiUpvote />
               {article.votes}
-            </p>
-            <p>
+            </span>
+            <span>
+              {" "}
               <BiCommentDetail /> {article.comment_count}
-            </p>
+            </span>
           </div>
-          <Voting />
+          <Voting votes={article.votes} incVotes={this.incVotes} />
         </section>
       );
     }
   }
+  incVotes = (num) => {
+    console.log(num);
+    this.setState(({ article: { votes, ...rest } }) => {
+      console.log(rest);
+      return {
+        article: {
+          votes: votes + num,
+          ...rest,
+        },
+      };
+    });
+  };
 }
 
 export default Article;

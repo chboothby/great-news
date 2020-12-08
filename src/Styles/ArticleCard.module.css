@@ -1,21 +1,19 @@
-li {
+.articleCard {
   display: flex;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  justify-content: space-around;
+  justify-content: space-between;
+  border: 1px solid black;
+  max-width: 800px;
 }
 
 .articlePreview {
-  border: 1px solid black;
-  width: 65%;
+  max-width: 600px;
   padding: 1rem;
 }
 
 .articleMetrics {
-  border: 1px solid black;
-  width: 30%;
+  min-width: fit-content;
   justify-self: flex-end;
+  align-self: center;
   padding: 1rem;
   display: flex;
 }

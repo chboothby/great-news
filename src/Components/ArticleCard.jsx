@@ -14,7 +14,7 @@ function ArticleCard({ article }) {
   });
 
   return (
-    <li key={`${article.article_id}`}>
+    <li className={styles.articleCard} key={`${article.article_id}`}>
       <section className={styles.articlePreview}>
         <h2>{article.title}</h2>
         <h3>By: {article.author}</h3>

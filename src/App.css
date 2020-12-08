@@ -24,8 +24,7 @@ ul {
   padding: 0;
 }
 
-.error-message {
+div {
   padding: 1rem;
-  border: 1px solid black;
   text-align: center;
 }
