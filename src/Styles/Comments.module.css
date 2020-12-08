@@ -1,0 +1,15 @@
+.commentCard {
+  max-width: 500px;
+  display: flex;
+  margin: 0 auto;
+  padding: 0.1rem;
+  margin: 2px auto;
+  border: 1px solid black;
+}
+.commentBody {
+  text-align: left;
+}
+
+.commentVotes {
+  align-self: center;
+}

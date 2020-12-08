@@ -44,7 +44,7 @@ export const addVote = (article_id, votes) => {
 
 export const getArticleComments = (article_id, sort_by, order) => {
   return newsApi
-    .get(`/articles/${article_id}/comments`)
+    .get(`/articles/${article_id}/comments`, { params: { sort_by, order } })
     .then(({ data: { comments } }) => {
       return comments;
     });

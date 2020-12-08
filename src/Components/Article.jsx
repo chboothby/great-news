@@ -70,9 +70,7 @@ class Article extends React.Component {
     }
   }
   incVotes = (num) => {
-    console.log(num);
     this.setState(({ article: { votes, ...rest } }) => {
-      console.log(rest);
       return {
         article: {
           votes: votes + num,
