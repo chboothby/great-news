@@ -1,7 +1,7 @@
 import { Link } from "@reach/router";
 import { useEffect, useState } from "react";
 import { getTopics } from "./api";
-import styles from "./Nav.module.css";
+import styles from "../Styles/Nav.module.css";
 
 function Nav() {
   const [topics, setTopics] = useState([]);
@@ -14,7 +14,7 @@ function Nav() {
 
   return (
     <nav className={styles.navBar}>
-      <Link className="all" to="/articles">
+      <Link className="all" to="/">
         all
       </Link>
       <section className={styles.topics}>

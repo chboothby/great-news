@@ -1,6 +1,7 @@
 import React from "react";
 import { getArticles } from "./api";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
 
 class Articles extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class Articles extends React.Component {
   render() {
     const { articles, isLoading } = this.state;
     if (isLoading) {
-      return <p>Loading articles...</p>;
+      return <Loading />;
     }
     return (
       <section className="main">

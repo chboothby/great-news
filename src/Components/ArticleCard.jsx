@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getPreview } from "./api";
-import styles from "./ArticleCard.module.css";
+import styles from "../Styles/ArticleCard.module.css";
 import { Link } from "@reach/router";
+import Loading from "./Loading";
 
 function ArticleCard({ article }) {
   const [preview, setPreview] = useState("");

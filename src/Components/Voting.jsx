@@ -1,10 +1,18 @@
+import { GrLike, GrDislike } from "react-icons/gr";
+import { FiHeart } from "react-icons/fi";
+
 function Voting() {
   return (
     <section className="votingBar">
-      <button>Superlike</button>
-      <button>Like</button>
-
-      <button>Dislike</button>
+      <button>
+        <FiHeart />
+      </button>
+      <button>
+        <GrLike />
+      </button>
+      <button>
+        <GrDislike />
+      </button>
     </section>
   );
 }

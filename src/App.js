@@ -13,7 +13,7 @@ function App() {
       <Nav />
 
       <Router>
-        <Articles path="/articles" />
+        <Articles path="/" />
 
         <Articles path="/articles/topics/:topic_slug" />
         <Article path="/articles/:article_id" />
