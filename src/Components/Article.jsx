@@ -2,7 +2,8 @@ import { getArticleById } from "./api";
 import Loading from "./Loading";
 import { BiCommentDetail, BiUpvote } from "react-icons/bi";
 import Voting from "./Voting";
-
+import PostComment from "./PostComment";
+import AllComments from "./AllComments";
 import React from "react";
 import ErrorMessage from "./ErrorMessage";
 
@@ -60,8 +61,10 @@ class Article extends React.Component {
               {" "}
               <BiCommentDetail /> {article.comment_count}
             </span>
+            <Voting id={article.article_id} incVotes={this.incVotes} />
+            <PostComment />
+            <AllComments />
           </div>
-          <Voting id={article.article_id} incVotes={this.incVotes} />
         </section>
       );
     }
