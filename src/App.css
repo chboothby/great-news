@@ -12,11 +12,20 @@
 
 header {
   height: 150px;
-  font-size: 3rem;
   text-align: center;
   border: 1px solid black;
+}
+
+h1 {
+  font-size: 5rem;
 }
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+.error-message {
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: center;
 }
