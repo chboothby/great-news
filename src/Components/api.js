@@ -38,4 +38,6 @@ export const getArticleById = (article_id) => {
     });
 };
 
-export const addVote = (vote) => {};
+export const addVote = (article_id, votes) => {
+  return newsApi.patch(`/articles/${article_id}`, { inc_votes: votes });
+};

@@ -3,7 +3,7 @@ import { FiHeart } from "react-icons/fi";
 import { useState } from "react";
 import { addVote } from "./api";
 
-function Voting({ incVotes, votes }) {
+function Voting({ incVotes, id }) {
   const [superLike, setSuperLike] = useState(false);
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
@@ -13,36 +13,39 @@ function Voting({ incVotes, votes }) {
       if (!superLike && !like && !dislike) {
         incVotes(num);
         setSuperLike(true);
+        addVote(id, num);
       } else if (superLike) {
         incVotes(-num);
         setSuperLike(false);
+        addVote(id, -num);
       }
     }
-    console.log(superLike, like, dislike);
     if (num === 1) {
       if (!like && !dislike && !superLike) {
-        console.log("hey");
         incVotes(num);
         setLike(true);
+        addVote(id, num);
       } else if (like) {
         incVotes(-num);
         setLike(false);
+        addVote(id, -num);
       }
     }
     if (num === -1) {
       if (!dislike && !like && !superLike) {
         incVotes(num);
         setDislike(true);
+        addVote(id, num);
       } else if (dislike) {
         incVotes(-num);
         setDislike(false);
+        addVote(id, -num);
       }
     }
   };
 
   return (
     <section className="votingBar">
-      <p>{votes}</p>
       <button
         onClick={() => {
           handleClick(10);

@@ -29,15 +29,11 @@ class Article extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const newProps = prevProps.article_id !== this.props.article_id;
-    const changedVote = prevState.article.votes !== this.state.article.votes;
     if (newProps) {
       getArticleById(this.props.article_id).then((article) => {
         this.setState({ article });
       });
     }
-    // }
-    // if (changedVote) {
-    // }
   }
 
   render() {
@@ -65,7 +61,7 @@ class Article extends React.Component {
               <BiCommentDetail /> {article.comment_count}
             </span>
           </div>
-          <Voting votes={article.votes} incVotes={this.incVotes} />
+          <Voting id={article.article_id} incVotes={this.incVotes} />
         </section>
       );
     }
