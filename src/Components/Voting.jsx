@@ -3,13 +3,16 @@ import { FiHeart } from "react-icons/fi";
 import { useState } from "react";
 import { addVote } from "./api";
 import styled from "styled-components";
+import styles from "../Styles/Article.module.css";
+
 const Button = styled.button`
   border: 1px solid black;
   border-radius: 20%;
-  height: 45px;
-  margin: 1rem;
+  height: 35px;
+  margin: 0.5rem;
   padding: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  outline: none;
   background: ${(props) => (props.clicked ? "purple" : "transparent")};
   color: ${(props) => (props.clicked ? "grey" : "black")};
 
@@ -78,7 +81,7 @@ function Voting({ incVotes, id }) {
   };
 
   return (
-    <section className="votingBar">
+    <section className={styles.voting}>
       <Button
         clicked={superLike}
         onClick={() => {

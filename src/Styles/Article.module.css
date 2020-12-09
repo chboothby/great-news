@@ -1,0 +1,27 @@
+.articleMain {
+  padding: 1rem 4rem;
+  border: 1px solid black;
+}
+.articleBody h2,
+.articleBody h3,
+.articleBody h4,
+.articleBody p {
+  padding: 0.5rem;
+}
+
+.articleMetrics {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.comments {
+  font-size: 1.25rem;
+  align-self: center;
+  justify-self: center;
+  margin: 0 auto;
+}
+.voting {
+  margin: 0 auto;
+  align-self: center;
+}

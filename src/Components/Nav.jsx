@@ -14,7 +14,7 @@ function Nav() {
 
   return (
     <nav className={styles.navBar}>
-      <Link className="all" to="/">
+      <Link className={styles.all} to="/">
         all
       </Link>
       <section className={styles.topics}>

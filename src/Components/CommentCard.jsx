@@ -1,6 +1,7 @@
 import moment from "moment";
-import { VscChevronUp, VscChevronDown } from "react-icons/vsc";
+
 import styles from "../Styles/Comments.module.css";
+import CommentVotes from "./CommentVotes";
 
 function CommentCard({ comments }) {
   return (
@@ -14,15 +15,7 @@ function CommentCard({ comments }) {
               </p>
               <p>{moment(`${comment.created_at}`, "YYYYMMDDHH").fromNow()}</p>
             </div>
-            <div className={styles.commentVotes}>
-              <p>
-                <VscChevronUp />
-              </p>
-              <p>{comment.votes}</p>
-              <p>
-                <VscChevronDown />
-              </p>
-            </div>
+            <CommentVotes comment={comment} />
           </li>
         );
       })}

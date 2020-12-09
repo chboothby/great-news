@@ -6,6 +6,7 @@ import PostComment from "./PostComment";
 import AllComments from "./AllComments";
 import React from "react";
 import ErrorMessage from "./ErrorMessage";
+import styles from "../Styles/Article.module.css";
 
 class Article extends React.Component {
   state = {
@@ -45,23 +46,29 @@ class Article extends React.Component {
       return <ErrorMessage errMessage={errMessage} />;
     } else {
       return (
-        <section className="articlePage">
-          <div className="articleMain">
-            <h2>{article.title}</h2>
-            <h3>{article.author} </h3>
-            <h4>{new Date(article.created_at).toDateString()}</h4>
-            <p>{article.body}</p>
+        <section className={styles.articlePage}>
+          <div className={styles.articleMain}>
+            {" "}
+            <div className={styles.articleBody}>
+              <h2>{article.title}</h2>
+              <h3>By: {article.author} </h3>
+              <h4>Posted: {new Date(article.created_at).toDateString()}</h4>
+              <p>{article.body}</p>
+            </div>
+            <div className={styles.articleMetrics}>
+              <span className={styles.comments}>
+                <BiUpvote />
+                {article.votes} <BiCommentDetail /> {article.comment_count}
+              </span>
+              <Voting
+                className={styles.voting}
+                id={article.article_id}
+                incVotes={this.incVotes}
+              />
+            </div>
           </div>
-          <div className="articleMetrics">
-            <span>
-              <BiUpvote />
-              {article.votes}
-            </span>
-            <span>
-              {" "}
-              <BiCommentDetail /> {article.comment_count}
-            </span>
-            <Voting id={article.article_id} incVotes={this.incVotes} />
+
+          <div className={styles.commentsSection}>
             <PostComment />
             <AllComments id={article.article_id} />
           </div>
