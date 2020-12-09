@@ -2,6 +2,7 @@ import styles from "../Styles/Comments.module.css";
 import { useState } from "react";
 import styled from "styled-components";
 import { VscChevronUp, VscChevronDown } from "react-icons/vsc";
+import { addCommentVote } from "./api";
 
 const Button = styled.button`
   border: none;
@@ -25,18 +26,34 @@ function CommentVotes({ comment }) {
       if (!hasDownVoted && !hasUpVoted) {
         setVotes(votes + vote);
         setUpVote(true);
+        addCommentVote(id, vote).catch(() => {
+          setVotes(votes);
+          setUpVote(false);
+        });
       } else if (hasUpVoted) {
         setVotes(votes - vote);
         setUpVote(false);
+        addCommentVote(id, -vote).catch(() => {
+          setVotes(votes);
+          setUpVote(true);
+        });
       }
     }
     if (vote < 0) {
       if (!hasDownVoted && !hasUpVoted) {
         setVotes(votes + vote);
         setDownVote(true);
+        addCommentVote(id, vote).catch(() => {
+          setVotes(votes);
+          setDownVote(false);
+        });
       } else if (hasDownVoted) {
         setVotes(votes - vote);
         setDownVote(false);
+        addCommentVote(id, -vote).catch(() => {
+          setVotes(votes);
+          setDownVote(true);
+        });
       }
     }
   };
