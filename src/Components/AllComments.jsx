@@ -26,6 +26,7 @@ class AllComments extends React.Component {
       this.setState({ comments });
     });
   };
+
   handleChange = ({ target: { value } }) => {
     value === "Oldest"
       ? this.setState({ sort_by: "created_at", order: "asc" })
@@ -40,20 +41,22 @@ class AllComments extends React.Component {
       return <Loading />;
     }
     return (
-      <div className="all-comments">
-        <h3>All comments</h3>
-        <form
-          onChange={this.handleChange}
-          className="comment-filter"
-          onSubmit={this.handleSubmit}
-        >
-          <select>
-            <option>Most recent</option>
-            <option>Oldest</option>
-            <option>Popularity</option>
-          </select>
-          <button type="submit">Sort</button>
-        </form>
+      <div>
+        <div className={styles.commentsHeader}>
+          <h3>All comments</h3>
+          <form
+            onChange={this.handleChange}
+            className={styles.commentFilter}
+            onSubmit={this.handleSubmit}
+          >
+            <select>
+              <option>Most recent</option>
+              <option>Oldest</option>
+              <option>Popularity</option>
+            </select>
+            <button type="submit">Sort</button>
+          </form>
+        </div>
         <CommentCard comments={comments} />
       </div>
     );

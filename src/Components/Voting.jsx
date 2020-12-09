@@ -28,33 +28,51 @@ function Voting({ incVotes, id }) {
       if (!superLike && !like && !dislike) {
         incVotes(num);
         setSuperLike(true);
-        addVote(id, num);
+        addVote(id, num).catch(() => {
+          incVotes(-num);
+          setSuperLike(false);
+        });
       } else if (superLike) {
         incVotes(-num);
         setSuperLike(false);
-        addVote(id, -num);
+        addVote(id, -num).catch(() => {
+          incVotes(num);
+          setSuperLike(true);
+        });
       }
     }
     if (num === 1) {
       if (!like && !dislike && !superLike) {
         incVotes(num);
         setLike(true);
-        addVote(id, num);
+        addVote(id, num).catch(() => {
+          incVotes(-num);
+          setLike(false);
+        });
       } else if (like) {
         incVotes(-num);
         setLike(false);
-        addVote(id, -num);
+        addVote(id, -num).catch(() => {
+          incVotes(num);
+          setLike(true);
+        });
       }
     }
     if (num === -1) {
       if (!dislike && !like && !superLike) {
         incVotes(num);
         setDislike(true);
-        addVote(id, num);
+        addVote(id, num).catch(() => {
+          incVotes(-num);
+          setDislike(false);
+        });
       } else if (dislike) {
         incVotes(-num);
         setDislike(false);
-        addVote(id, -num);
+        addVote(id, -num).catch(() => {
+          incVotes(num);
+          setDislike(true);
+        });
       }
     }
   };

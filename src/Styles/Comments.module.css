@@ -1,3 +1,9 @@
+.commentsHeader {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
 .commentCard {
   max-width: 500px;
   display: flex;
