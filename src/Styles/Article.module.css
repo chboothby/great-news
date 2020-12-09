@@ -1,18 +1,31 @@
 .articleMain {
   padding: 1rem 4rem;
-  border: 1px solid black;
+  background: #5e4b56;
+  max-width: 700px;
+  margin: 3vh auto;
+}
+.articleBody {
+  padding: 1rem;
 }
 .articleBody h2,
 .articleBody h3,
 .articleBody h4,
 .articleBody p {
-  padding: 0.5rem;
+  padding: 0.75rem;
+  background-color: #e1e2e2;
+}
+.articleBody p {
+  padding: 1rem;
+  background-color: #e1e2e2;
 }
 
 .articleMetrics {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  background-color: #e1e2e2;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .comments {
@@ -20,8 +33,16 @@
   align-self: center;
   justify-self: center;
   margin: 0 auto;
+  letter-spacing: 2px;
 }
 .voting {
   margin: 0 auto;
   align-self: center;
+}
+
+.commentsSection {
+  background: #003844;
+  max-width: 600px;
+  margin: 1px auto;
+  padding: 1rem;
 }

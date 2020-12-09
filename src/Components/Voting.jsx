@@ -6,17 +6,16 @@ import styled from "styled-components";
 import styles from "../Styles/Article.module.css";
 
 const Button = styled.button`
-  border: 1px solid black;
   border-radius: 20%;
-  height: 35px;
+  min-height: 30px;
   margin: 0.5rem;
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 0.3rem;
+  font-size: 1.2rem;
   outline: none;
-  background: ${(props) => (props.clicked ? "purple" : "transparent")};
-  color: ${(props) => (props.clicked ? "grey" : "black")};
+  background: ${(props) => (props.clicked ? "#fb8122" : "transparent")};
+  color: ${(props) => (props.clicked ? "#1D2228" : "#1D2228")};
 
-  &&:hover {
+  &:hover {
     opacity: 0.7;
   }
 `;

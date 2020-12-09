@@ -1,7 +1,7 @@
 import styles from "../Styles/Comments.module.css";
 import { useState } from "react";
 import styled from "styled-components";
-import { VscChevronUp, VscChevronDown } from "react-icons/vsc";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { addCommentVote } from "./api";
 
 const Button = styled.button`
@@ -9,7 +9,7 @@ const Button = styled.button`
   border-radius: 20%;
   background-color: transparent;
   font-size: 2rem;
-  color: ${(props) => (props.clicked ? "purple" : "black")};
+  color: ${(props) => (props.clicked ? "#FB8122" : "#1D2228")};
   outline: none;
   &:hover {
     background-color: transparent;
@@ -66,14 +66,14 @@ function CommentVotes({ comment }) {
         clicked={hasUpVoted}
         onClick={() => updateVotes(comment.comment_id, 1)}
       >
-        <VscChevronUp />
+        <FaChevronUp />
       </Button>
       <p>{votes}</p>
       <Button
         clicked={hasDownVoted}
         onClick={() => updateVotes(comment.comment_id, -1)}
       >
-        <VscChevronDown />
+        <FaChevronDown />
       </Button>
     </div>
   );

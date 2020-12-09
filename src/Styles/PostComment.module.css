@@ -1,16 +1,17 @@
 .postComment h3 {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 5px auto;
   padding: 1rem;
   text-align: left;
+  background: #e1e2e2;
 }
 .form {
   display: flex;
-  border: 1px solid black;
   max-width: 500px;
   margin: 0 auto;
   text-align: left;
   padding: 1rem;
+  background: #e1e2e2;
 }
 .form button {
   align-self: center;

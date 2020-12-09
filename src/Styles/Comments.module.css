@@ -1,16 +1,19 @@
 .commentsHeader {
   display: flex;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 5px auto;
+  padding: 1rem;
   justify-content: space-between;
+  background-color: #e1e2e2;
 }
 .commentCard {
   max-width: 500px;
+
   display: flex;
-  margin: 0 auto;
-  padding: 0.1rem;
-  margin: 2px auto;
-  border: 1px solid black;
+
+  padding: 0.4rem;
+  margin: 5px auto;
+  background-color: #e1e2e2;
 }
 .commentBody {
   text-align: left;

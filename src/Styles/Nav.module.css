@@ -1,25 +1,36 @@
 .navBar {
-  border: 1px solid black;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  background: #003844;
+  margin: 1rem 2rem;
+  font-size: 1.5rem;
 }
 
 .all {
   align-self: flex-start;
   text-decoration: none;
+  color: #e1e2e2;
 }
 
 .topics {
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
+  color: #003844;
 }
 
 .topic {
   padding: 0 1rem;
+  color: #e1e2e2;
   text-decoration: none;
 }
-.topic:active {
-  background: purple;
+.all:hover,
+.topic:hover {
+  color: #fb8122;
+}
+
+.topic:visited {
+  text-decoration: none;
 }
