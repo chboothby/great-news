@@ -1,6 +1,7 @@
 import React from "react";
 import { getArticleComments } from "./api";
 import CommentCard from "./CommentCard";
+import PostComment from "./PostComment";
 import Loading from "./Loading";
 import styles from "../Styles/Comments.module.css";
 
@@ -42,6 +43,7 @@ class AllComments extends React.Component {
     }
     return (
       <div>
+        <PostComment addComment={this.addComment} />
         <div className={styles.commentsHeader}>
           <h3>All comments</h3>
           <form
@@ -61,6 +63,24 @@ class AllComments extends React.Component {
       </div>
     );
   }
+
+  addComment = (body) => {
+    const date = JSON.stringify(new Date());
+    this.setState((currState) => {
+      return {
+        comments: [
+          {
+            author: "lurker",
+            body,
+            created_at: date,
+            comment_id: 100000,
+            votes: 0,
+          },
+          ...currState.comments,
+        ],
+      };
+    });
+  };
 }
 
 export default AllComments;

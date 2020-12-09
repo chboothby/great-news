@@ -14,8 +14,8 @@ function Nav() {
 
   return (
     <nav className={styles.navBar}>
-      <Link className={styles.all} to="/">
-        all
+      <Link className={styles.recent} to="/">
+        recent
       </Link>
       <section className={styles.topics}>
         {topics.map((topic) => {
