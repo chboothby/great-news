@@ -1,10 +1,19 @@
 import { useState } from "react";
 import styles from "../Styles/PostComment.module.css";
-function PostComment({ addComment }) {
+import { postComment } from "./api";
+
+function PostComment({ addComment, id, removeComment }) {
   const [comment, setComment] = useState("");
+  const [hasError, setError] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
-    addComment(comment);
+    addComment(comment, "cooljmessy");
+    postComment(id, comment, "cooljmessy").catch(
+      ({ response: { status, statusText } }) => {
+        setError(`Oops.. ${status}: ${statusText}`);
+        removeComment();
+      }
+    );
   };
 
   const handleChange = ({ target: { value } }) => {
@@ -25,6 +34,7 @@ function PostComment({ addComment }) {
           placeholder="Have your say about this article..."
         ></input>
         <button type="submit">Post</button>
+        {hasError ? <p>{hasError}</p> : null}
       </form>
     </div>
   );

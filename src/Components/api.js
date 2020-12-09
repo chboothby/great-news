@@ -53,3 +53,10 @@ export const getArticleComments = (article_id, sort_by, order) => {
 export const addCommentVote = (comment_id, vote) => {
   return newsApi.patch(`/comments/${comment_id}`, { inc_votes: vote });
 };
+
+export const postComment = (article_id, body, username) => {
+  return newsApi.post(`/articles/${article_id}/comments`, {
+    username,
+    body,
+  });
+};

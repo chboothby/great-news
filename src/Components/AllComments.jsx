@@ -43,7 +43,11 @@ class AllComments extends React.Component {
     }
     return (
       <div>
-        <PostComment addComment={this.addComment} />
+        <PostComment
+          addComment={this.addComment}
+          removeComment={this.removeComment}
+          id={this.props.id}
+        />
         <div className={styles.commentsHeader}>
           <h3>All comments</h3>
           <form
@@ -64,13 +68,13 @@ class AllComments extends React.Component {
     );
   }
 
-  addComment = (body) => {
+  addComment = (body, author) => {
     const date = JSON.stringify(new Date());
     this.setState((currState) => {
       return {
         comments: [
           {
-            author: "lurker",
+            author,
             body,
             created_at: date,
             comment_id: 100000,
@@ -78,6 +82,14 @@ class AllComments extends React.Component {
           },
           ...currState.comments,
         ],
+      };
+    });
+  };
+
+  removeComment = () => {
+    this.setState((currState) => {
+      return {
+        comments: currState.comments.slice(1),
       };
     });
   };

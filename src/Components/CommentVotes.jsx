@@ -14,6 +14,7 @@ const Button = styled.button`
   &:hover {
     background-color: transparent;
     opacity: 0.7;
+    color: #fb8122;
     border: none;
   }
 `;

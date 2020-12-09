@@ -56,3 +56,6 @@ strong {
 h3 {
   text-decoration: dashed overline #fb8122;
 }
+p {
+  line-height: 20px;
+}
