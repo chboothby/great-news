@@ -12,7 +12,9 @@ const Button = styled.button`
   color: ${(props) => (props.clicked ? "purple" : "black")};
   outline: none;
   &:hover {
+    background-color: transparent;
     opacity: 0.7;
+    border: none;
   }
 `;
 
@@ -57,6 +59,7 @@ function CommentVotes({ comment }) {
       }
     }
   };
+
   return (
     <div className={styles.commentVotes}>
       <Button

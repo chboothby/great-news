@@ -1,0 +1,22 @@
+.postComment h3 {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: left;
+}
+.form {
+  display: flex;
+  border: 1px solid black;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 1rem;
+}
+.form button {
+  align-self: center;
+}
+.textField {
+  margin: 0 auto;
+  height: 70px;
+  width: 400px;
+}

@@ -51,7 +51,5 @@ export const getArticleComments = (article_id, sort_by, order) => {
 };
 
 export const addCommentVote = (comment_id, vote) => {
-  return newsApi
-    .patch(`/comments/${comment_id}`, { inc_votes: vote })
-    .then((response) => console.log(response));
+  return newsApi.patch(`/comments/${comment_id}`, { inc_votes: vote });
 };
