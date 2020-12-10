@@ -32,6 +32,16 @@ class Articles extends React.Component {
     }
     return (
       <section className="main">
+        <div className="filter">
+          <form>
+            <select>
+              <option>Most recent</option>
+              <option>Oldest</option>
+              <option>Popularity</option>
+            </select>
+            <button type="submit">Sort</button>
+          </form>
+        </div>
         <ul>
           {articles.map((article) => {
             return <ArticleCard key={article.article_id} article={article} />;

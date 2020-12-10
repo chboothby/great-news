@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Nav />
 
-      <Router>
+      <Router primary={false}>
         <Articles path="/" />
         <Articles path="/articles/topics/:topic_slug" />
         <Article path="/articles/:article_id" />

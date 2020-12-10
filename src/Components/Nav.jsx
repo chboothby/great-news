@@ -12,21 +12,36 @@ function Nav() {
     });
   }, [topics]);
 
+  const NavLink = (props) => (
+    <Link
+      {...props}
+      getProps={({ isCurrent }) => {
+        // the object returned here is passed to the
+        // anchor element's props
+        return {
+          style: {
+            color: isCurrent ? "#fb8122" : "#e1e2e2",
+          },
+        };
+      }}
+    />
+  );
+
   return (
     <nav className={styles.navBar}>
-      <Link className={styles.recent} to="/">
+      <NavLink className={styles.recent} to="/">
         recent
-      </Link>
+      </NavLink>
       <section className={styles.topics}>
         {topics.map((topic) => {
           return (
-            <Link
+            <NavLink
               className={styles.topic}
               to={`/articles/topics/${topic.slug}`}
               key={`${topic.slug}`}
             >
               {topic.slug}
-            </Link>
+            </NavLink>
           );
         })}
       </section>

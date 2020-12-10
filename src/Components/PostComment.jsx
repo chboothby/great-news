@@ -5,6 +5,7 @@ import { postComment } from "./api";
 function PostComment({ addComment, id, removeComment }) {
   const [comment, setComment] = useState("");
   const [hasError, setError] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     addComment(comment, "cooljmessy");
@@ -19,6 +20,7 @@ function PostComment({ addComment, id, removeComment }) {
   const handleChange = ({ target: { value } }) => {
     setComment(value);
   };
+
   return (
     <div className={styles.postComment}>
       <h3>Add Comment</h3>
