@@ -1,7 +1,11 @@
 import { Link } from "@reach/router";
 import { generateGreeting, todaysDate } from "./utils";
+import { UserContext } from "../App";
+import { useContext } from "react";
 
-function Header({ user: { name } }) {
+function Header() {
+  const { name } = useContext(UserContext);
+
   return (
     <header>
       <h1>Great News</h1>

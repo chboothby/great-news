@@ -74,3 +74,7 @@ export const getUser = (user) => {
     return user;
   });
 };
+
+export const removeComment = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`);
+};

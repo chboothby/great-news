@@ -5,9 +5,10 @@ import Nav from "./Components/Nav";
 import Articles from "./Components/Articles";
 import Article from "./Components/Article";
 import UserPage from "./Components/UserPage";
-
 import ErrorMessage from "./Components/ErrorMessage";
 import { Router } from "@reach/router";
+
+export const UserContext = React.createContext();
 
 class App extends React.Component {
   state = {
@@ -21,17 +22,19 @@ class App extends React.Component {
   render() {
     const { loggedInUser } = this.state;
     return (
-      <div className="App">
-        <Header user={loggedInUser} />
-        <Nav />
-        <Router primary={false}>
-          <Articles path="/" user={loggedInUser} />
-          <UserPage path="/user" updateUser={this.updateUser} />
-          <Articles path="/articles/topics/:topic_slug" user={loggedInUser} />
-          <Article path="/articles/:article_id" user={loggedInUser} />
-          <ErrorMessage default errMessage="404: Page Not Found" />
-        </Router>
-      </div>
+      <UserContext.Provider value={loggedInUser}>
+        <div className="App">
+          <Header />
+          <Nav />
+          <Router primary={false}>
+            <Articles path="/" />
+            <UserPage path="/user" updateUser={this.updateUser} />
+            <Articles path="/articles/topics/:topic_slug" user={loggedInUser} />
+            <Article path="/articles/:article_id" user={loggedInUser} />
+            <ErrorMessage default errMessage="404: Page Not Found" />
+          </Router>
+        </div>
+      </UserContext.Provider>
     );
   }
 

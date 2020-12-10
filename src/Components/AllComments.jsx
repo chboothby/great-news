@@ -11,6 +11,7 @@ class AllComments extends React.Component {
     isLoading: true,
     sort_by: "created_at",
     order: "desc",
+    commentAdded: false,
   };
 
   componentDidMount() {
@@ -18,6 +19,16 @@ class AllComments extends React.Component {
     getArticleComments(this.props.id, sort_by, order).then((comments) => {
       this.setState({ comments, isLoading: false });
     });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const { sort_by, order } = this.state;
+
+    const newComment = prevState.commentAdded !== this.state.commentAdded;
+    if (newComment) {
+      getArticleComments(this.props.id, sort_by, order).then((comments) => {
+        this.setState({ comments, commentAdded: false });
+      });
+    }
   }
 
   handleSubmit = (event) => {
@@ -47,7 +58,6 @@ class AllComments extends React.Component {
           addComment={this.addComment}
           removeComment={this.removeComment}
           id={this.props.id}
-          user={this.props.user}
         />
         <div className={styles.commentsHeader}>
           <h3>All Comments</h3>
@@ -64,7 +74,7 @@ class AllComments extends React.Component {
             <button type="submit">Sort</button>
           </form>
         </div>
-        <CommentCard comments={comments} user={this.props.user} />
+        <CommentCard comments={comments} deleteComment={this.deleteComment} />
       </div>
     );
   }
@@ -83,6 +93,7 @@ class AllComments extends React.Component {
           },
           ...currState.comments,
         ],
+        commentAdded: true,
       };
     });
   };
@@ -91,6 +102,16 @@ class AllComments extends React.Component {
     this.setState((currState) => {
       return {
         comments: currState.comments.slice(1),
+      };
+    });
+  };
+
+  deleteComment = (id) => {
+    this.setState((currState) => {
+      return {
+        comments: currState.comments.filter(({ comment_id }) => {
+          return id !== comment_id;
+        }),
       };
     });
   };

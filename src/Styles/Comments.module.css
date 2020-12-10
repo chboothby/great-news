@@ -27,6 +27,10 @@
   align-self: center;
 }
 
+.deleteBtn {
+  float: right;
+}
+
 @media only screen and (max-width: 800px) {
   .commentFilter {
     margin-left: 0;
