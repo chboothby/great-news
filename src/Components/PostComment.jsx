@@ -29,12 +29,12 @@ function PostComment({ addComment, id, removeComment }) {
         onSubmit={handleSubmit}
         onChange={handleChange}
       >
-        <input
+        <textarea
           required
           className={styles.textField}
           type="text"
           placeholder="Have your say about this article..."
-        ></input>
+        ></textarea>
         <button type="submit">Post</button>
         {hasError ? <p>{hasError}</p> : null}
       </form>

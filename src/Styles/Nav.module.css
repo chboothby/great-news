@@ -8,13 +8,14 @@
 }
 
 .recent {
-  align-self: flex-start;
+  align-self: center;
+  justify-self: center;
   text-decoration: none;
   color: #e1e2e2;
 }
 
 .topics {
-  align-self: flex-end;
+  align-self: center;
   display: flex;
   justify-content: space-between;
   text-decoration: none;
@@ -33,4 +34,14 @@
 
 .topic:visited {
   text-decoration: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .navBar {
+    margin: 1rem 0;
+    font-size: auto;
+  }
+  .topic {
+    padding: 0.3rem;
+  }
 }

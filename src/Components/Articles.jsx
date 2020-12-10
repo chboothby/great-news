@@ -2,6 +2,7 @@ import React from "react";
 import { getArticles } from "./api";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
+import FilterArticles from "./FilterArticles";
 
 class Articles extends React.Component {
   state = {
@@ -32,16 +33,8 @@ class Articles extends React.Component {
     }
     return (
       <section className="main">
-        <div className="filter">
-          <form>
-            <select>
-              <option>Most recent</option>
-              <option>Oldest</option>
-              <option>Popularity</option>
-            </select>
-            <button type="submit">Sort</button>
-          </form>
-        </div>
+        <FilterArticles filterArticles={this.filterArticles} />
+        <div className="popular"></div>
         <ul>
           {articles.map((article) => {
             return <ArticleCard key={article.article_id} article={article} />;
@@ -50,6 +43,20 @@ class Articles extends React.Component {
       </section>
     );
   }
+
+  filterArticles = (filter) => {
+    let order = "desc";
+    let sort_by = "created_at";
+    if (filter === "Oldest") {
+      order = "asc";
+    }
+    if (filter === "Most popular") {
+      sort_by = "votes";
+    }
+    getArticles(this.props.topic_slug, order, sort_by).then((articles) => {
+      this.setState({ articles });
+    });
+  };
 }
 
 export default Articles;

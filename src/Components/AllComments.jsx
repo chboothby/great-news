@@ -49,7 +49,7 @@ class AllComments extends React.Component {
           id={this.props.id}
         />
         <div className={styles.commentsHeader}>
-          <h3>All comments</h3>
+          <h3>All Comments</h3>
           <form
             onChange={this.handleChange}
             className={styles.commentFilter}

@@ -1,7 +1,7 @@
 .articleCard {
   display: flex;
   justify-content: space-between;
-  max-width: 600px;
+  max-width: 700px;
   margin: 3px auto;
   border: 3px solid #003844;
 }
@@ -25,4 +25,7 @@
 }
 .link:hover {
   color: #003844;
+}
+
+@media only screen and (max-width: 800px) {
 }

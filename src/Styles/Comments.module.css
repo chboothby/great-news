@@ -18,6 +18,17 @@
   text-align: left;
 }
 
+.commentFilter {
+  text-align: left;
+  margin-left: 2rem;
+}
+
 .commentVotes {
   align-self: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .commentFilter {
+    margin-left: 0;
+  }
 }

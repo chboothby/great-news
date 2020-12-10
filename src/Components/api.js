@@ -9,11 +9,13 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = (topic) => {
+export const getArticles = (topic, order, sort_by) => {
   return newsApi
     .get("/articles", {
       params: {
         topic,
+        order,
+        sort_by,
       },
     })
     .then(({ data: { articles } }) => {

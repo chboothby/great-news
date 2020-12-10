@@ -21,7 +21,6 @@ function ArticleCard({ article }) {
         <h3>
           By: {article.author}{" "}
           <span>
-            {" "}
             <FaRegNewspaper /> {new Date(article.created_at).toDateString()}
           </span>
         </h3>

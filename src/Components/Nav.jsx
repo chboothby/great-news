@@ -16,8 +16,6 @@ function Nav() {
     <Link
       {...props}
       getProps={({ isCurrent }) => {
-        // the object returned here is passed to the
-        // anchor element's props
         return {
           style: {
             color: isCurrent ? "#fb8122" : "#e1e2e2",
@@ -29,15 +27,15 @@ function Nav() {
 
   return (
     <nav className={styles.navBar}>
-      <NavLink className={styles.recent} to="/">
-        recent
+      <NavLink to="/" className={styles.recent}>
+        all
       </NavLink>
       <section className={styles.topics}>
         {topics.map((topic) => {
           return (
             <NavLink
-              className={styles.topic}
               to={`/articles/topics/${topic.slug}`}
+              className={styles.topic}
               key={`${topic.slug}`}
             >
               {topic.slug}
