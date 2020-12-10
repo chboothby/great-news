@@ -1,9 +1,11 @@
 import React from "react";
 import { getUsers, getUser } from "./api";
 import Loading from "./Loading";
+import styles from "../Styles/UserPage.module.css";
+
 class UserPage extends React.Component {
   state = {
-    selectedUser: "",
+    selectedUser: "tickle122",
     users: [],
     user: {
       username: "cooljmessy",
@@ -14,6 +16,7 @@ class UserPage extends React.Component {
     isLoading: true,
     isLoggedIn: true,
   };
+
   componentDidMount() {
     getUsers().then((users) => {
       this.setState({ users, isLoading: false });
@@ -45,28 +48,37 @@ class UserPage extends React.Component {
     }
     if (isLoggedIn) {
       return (
-        <section className="userPage">
-          <div className="userCard">
-            <img src={user.avatar_url} alt={`${user.name}'s avatar`}></img>
-            <h3>{user.name}</h3>
-            <h4>Username: {user.username}</h4>
-            <button onClick={this.logout}>Logout</button>
+        <section className={styles.userPage}>
+          <div className={styles.userCard}>
+            <div className={styles.userInfo}>
+              <h3>{user.name}</h3>
+              <img src={user.avatar_url} alt={`${user.name}'s avatar`}></img>
+
+              <h4>Username: {user.username}</h4>
+              <button onClick={this.logout}>Logout</button>
+            </div>
           </div>
         </section>
       );
     } else {
       return (
-        <div className="loginPage">
-          <h3>Please login to view your profile</h3>
-          <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-            <select>
-              Select user:
-              {users.map((user) => {
-                return <option key={user.username}>{user.username}</option>;
-              })}
-            </select>
-            <button type="submit">Login</button>
-          </form>
+        <div className={styles.userPage}>
+          <div className={styles.userCard}>
+            <form
+              className={styles.userInfo}
+              onChange={this.handleChange}
+              onSubmit={this.handleSubmit}
+            >
+              <h3>Please login to view your profile</h3>
+
+              <select className={styles.select}>
+                {users.map((user) => {
+                  return <option key={user.username}>{user.username}</option>;
+                })}
+              </select>
+              <button type="submit">Login</button>
+            </form>
+          </div>
         </div>
       );
     }

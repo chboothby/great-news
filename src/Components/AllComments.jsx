@@ -21,13 +21,13 @@ class AllComments extends React.Component {
     });
   }
   componentDidUpdate(prevProps, prevState) {
-    const { sort_by, order } = this.state;
-
     const newComment = prevState.commentAdded !== this.state.commentAdded;
     if (newComment) {
-      getArticleComments(this.props.id, sort_by, order).then((comments) => {
-        this.setState({ comments, commentAdded: false });
-      });
+      getArticleComments(this.props.id, "created_at", "desc").then(
+        (comments) => {
+          this.setState({ comments, commentAdded: false });
+        }
+      );
     }
   }
 

@@ -2,17 +2,32 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 body {
   background: #6994c7;
 }
 
 .App {
-  margin: 5vh auto;
+  margin: 0 auto;
   max-width: 800px;
+  height: auto;
   background-color: #e1e2e2;
   color: #2c2526;
   padding: 1rem;
+  box-shadow: 0px 0px 100px rgba(94, 75, 86, 0.6);
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 header {
@@ -39,6 +54,7 @@ button {
   padding: 6px;
   margin: 0 1rem;
   background-color: #003844;
+  transition: all 0.3s ease-in-out;
 }
 button:hover {
   background-color: #fb8122;
@@ -58,6 +74,24 @@ h3 {
 }
 p {
   line-height: 20px;
+}
+.user {
+  text-decoration: none;
+  background: #5e4b56;
+  padding: 0 0.5rem;
+  margin: 0.5rem;
+  border-radius: 20%;
+  transition: all 0.3s ease-in-out;
+}
+
+.user:visited {
+  color: #fb8122;
+}
+.user:hover {
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 10px 5px 15px rgba(251, 129, 34, 0.6);
 }
 
 @media only screen and (max-width: 800px) {

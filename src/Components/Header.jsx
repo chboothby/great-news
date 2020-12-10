@@ -11,7 +11,12 @@ function Header() {
       <h1>Great News</h1>
       <h2>{todaysDate()}</h2>
       <h2>
-        {generateGreeting()} <Link to="/user">{name.split(" ")[0]}</Link>
+        {generateGreeting()}
+        <span className="wrap">
+          <Link className="user" to="/user">
+            {name.split(" ")[0]}
+          </Link>
+        </span>
       </h2>
     </header>
   );

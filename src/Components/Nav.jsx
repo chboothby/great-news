@@ -12,34 +12,21 @@ function Nav() {
     });
   }, [topics]);
 
-  const NavLink = (props) => (
-    <Link
-      {...props}
-      getProps={({ isCurrent }) => {
-        return {
-          style: {
-            color: isCurrent ? "#fb8122" : "#e1e2e2",
-          },
-        };
-      }}
-    />
-  );
-
   return (
     <nav className={styles.navBar}>
-      <NavLink to="/" className={styles.recent}>
+      <Link to="/" className={styles.recent}>
         all
-      </NavLink>
+      </Link>
       <section className={styles.topics}>
         {topics.map((topic) => {
           return (
-            <NavLink
+            <Link
               to={`/articles/topics/${topic.slug}`}
               className={styles.topic}
               key={`${topic.slug}`}
             >
               {topic.slug}
-            </NavLink>
+            </Link>
           );
         })}
       </section>

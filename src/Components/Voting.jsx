@@ -1,5 +1,4 @@
-import { GrLike, GrDislike } from "react-icons/gr";
-import { FiHeart } from "react-icons/fi";
+import { FiHeart, FiThumbsDown, FiThumbsUp } from "react-icons/fi";
 import { useState } from "react";
 import { addVote } from "./api";
 import styled from "styled-components";
@@ -13,10 +12,12 @@ const Button = styled.button`
   font-size: 1.2rem;
   outline: none;
   background: ${(props) => (props.clicked ? "#fb8122" : "transparent")};
-  color: ${(props) => (props.clicked ? "#1D2228" : "#1D2228")};
-
+  color: #1d2228;
+  transition: all 0.4s ease-in-out;
   &:hover {
-    opacity: 0.7;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 10px 5px 15px rgba(251, 129, 34, 0.8);
   }
 `;
 
@@ -95,7 +96,7 @@ function Voting({ incVotes, id }) {
           handleClick(1);
         }}
       >
-        <GrLike />
+        <FiThumbsUp />
       </Button>
       <Button
         clicked={dislike}
@@ -103,7 +104,7 @@ function Voting({ incVotes, id }) {
           handleClick(-1);
         }}
       >
-        <GrDislike />
+        <FiThumbsDown />
       </Button>
     </section>
   );
