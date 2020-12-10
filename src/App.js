@@ -25,10 +25,10 @@ class App extends React.Component {
         <Header user={loggedInUser} />
         <Nav />
         <Router primary={false}>
-          <Articles path="/" />
+          <Articles path="/" user={loggedInUser} />
           <UserPage path="/user" updateUser={this.updateUser} />
-          <Articles path="/articles/topics/:topic_slug" />
-          <Article path="/articles/:article_id" />
+          <Articles path="/articles/topics/:topic_slug" user={loggedInUser} />
+          <Article path="/articles/:article_id" user={loggedInUser} />
           <ErrorMessage default errMessage="404: Page Not Found" />
         </Router>
       </div>

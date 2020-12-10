@@ -2,14 +2,14 @@ import { useState } from "react";
 import styles from "../Styles/PostComment.module.css";
 import { postComment } from "./api";
 
-function PostComment({ addComment, id, removeComment }) {
+function PostComment({ addComment, id, removeComment, user: { username } }) {
   const [comment, setComment] = useState("");
   const [hasError, setError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addComment(comment, "cooljmessy");
-    postComment(id, comment, "cooljmessy").catch(
+    addComment(comment, username);
+    postComment(id, comment, username).catch(
       ({ response: { status, statusText } }) => {
         setError(`Oops.. ${status}: ${statusText}`);
         removeComment();

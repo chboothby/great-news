@@ -47,6 +47,7 @@ class AllComments extends React.Component {
           addComment={this.addComment}
           removeComment={this.removeComment}
           id={this.props.id}
+          user={this.props.user}
         />
         <div className={styles.commentsHeader}>
           <h3>All Comments</h3>
@@ -63,7 +64,7 @@ class AllComments extends React.Component {
             <button type="submit">Sort</button>
           </form>
         </div>
-        <CommentCard comments={comments} />
+        <CommentCard comments={comments} user={this.props.user} />
       </div>
     );
   }

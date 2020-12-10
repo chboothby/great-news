@@ -68,7 +68,7 @@ class Article extends React.Component {
           </div>
 
           <div className={styles.commentsSection}>
-            <AllComments id={article.article_id} />
+            <AllComments id={article.article_id} user={this.props.user} />
           </div>
         </section>
       );
