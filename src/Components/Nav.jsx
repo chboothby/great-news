@@ -2,6 +2,7 @@ import { Link } from "@reach/router";
 import { useEffect, useState } from "react";
 import { getTopics } from "./api";
 import styles from "../Styles/Nav.module.css";
+import { FiHome } from "react-icons/fi";
 
 function Nav() {
   const [topics, setTopics] = useState([]);
@@ -15,7 +16,7 @@ function Nav() {
   return (
     <nav className={styles.navBar}>
       <Link to="/" className={styles.recent}>
-        all
+        <FiHome />
       </Link>
       <section className={styles.topics}>
         {topics.map((topic) => {

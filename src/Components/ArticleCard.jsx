@@ -31,7 +31,7 @@ function ArticleCard({ article }) {
               className={styles.link}
               to={`/articles/${article.article_id}`}
             >
-              see more
+              read more
             </Link>
           </span>
         </p>

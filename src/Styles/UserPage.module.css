@@ -18,17 +18,17 @@
   background: #2c2526;
   min-height: 80vh;
   max-width: 700px;
-  margin: 10px auto;
+  margin: 0 auto;
   padding: 0.5rem 1rem;
 }
 
 .userInfo {
   background: #e1e2e2;
   max-width: 400px;
-  margin: 10px auto;
+  margin: 5% auto;
   padding: 1rem;
   font-size: 1.2rem;
-  min-height: 60vh;
+  min-height: fit-content;
 }
 
 .userInfo img {
@@ -45,6 +45,4 @@
 .userInfo h3,
 .userInfo h4 {
   padding-bottom: 0.5rem;
-}
-.select {
 }

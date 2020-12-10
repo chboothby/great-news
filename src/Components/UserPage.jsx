@@ -2,6 +2,7 @@ import React from "react";
 import { getUsers, getUser } from "./api";
 import Loading from "./Loading";
 import styles from "../Styles/UserPage.module.css";
+import PostArticle from "./PostArticle";
 
 class UserPage extends React.Component {
   state = {
@@ -15,12 +16,12 @@ class UserPage extends React.Component {
     },
     isLoading: true,
     isLoggedIn: true,
+    postArticle: false,
   };
 
   componentDidMount() {
     getUsers().then((users) => {
       this.setState({ users, isLoading: false });
-      console.log(this.state.users);
     });
   }
 
@@ -42,7 +43,7 @@ class UserPage extends React.Component {
   };
 
   render() {
-    const { user, users, isLoading, isLoggedIn } = this.state;
+    const { user, users, isLoading, isLoggedIn, postArticle } = this.state;
     if (isLoading) {
       return <Loading />;
     }
@@ -53,9 +54,16 @@ class UserPage extends React.Component {
             <div className={styles.userInfo}>
               <h3>{user.name}</h3>
               <img src={user.avatar_url} alt={`${user.name}'s avatar`}></img>
-
               <h4>Username: {user.username}</h4>
+              <button
+                onClick={() => {
+                  this.setState({ postArticle: true });
+                }}
+              >
+                Post Article
+              </button>
               <button onClick={this.logout}>Logout</button>
+              {postArticle ? <PostArticle user={user.username} /> : null}
             </div>
           </div>
         </section>

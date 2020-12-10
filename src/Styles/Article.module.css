@@ -1,7 +1,7 @@
 .articleMain {
   padding: 1rem 4rem;
   background: #5e4b56;
-  max-width: 700px;
+  max-width: 800px;
   margin: 3vh auto;
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
@@ -55,7 +55,7 @@
 
 .commentsSection {
   background: #003844;
-  max-width: 600px;
+  max-width: 800px;
   margin: 1px auto;
   padding: 1rem;
 }

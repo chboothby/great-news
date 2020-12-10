@@ -1,17 +1,19 @@
 .navBar {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.5rem;
   background: #003844;
-  margin: 1rem 2rem;
+  margin: 1rem 0rem;
   font-size: 1.5rem;
 }
 
 .recent {
-  align-self: center;
-  justify-self: center;
   text-decoration: none;
   color: #e1e2e2;
+  margin-left: 2rem;
+  margin-bottom: -5px;
+  font-size: 2rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .topics {

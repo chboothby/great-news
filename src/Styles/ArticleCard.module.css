@@ -1,8 +1,8 @@
 .articleCard {
   display: flex;
   justify-content: space-between;
-  max-width: 700px;
-  margin: 3px auto;
+  max-width: 800px;
+  margin: 8px auto;
   border: 3px solid #003844;
   animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
@@ -19,7 +19,7 @@
 }
 
 .articlePreview {
-  max-width: 600px;
+  max-width: 700px;
   padding: 1rem;
 }
 
@@ -32,6 +32,7 @@
 }
 
 .link {
+  font-size: 1.1rem;
   text-decoration: none;
   color: #fb8122;
 }
