@@ -62,3 +62,15 @@ export const postComment = (article_id, body, username) => {
     body,
   });
 };
+
+export const getUsers = () => {
+  return newsApi.get("/users").then(({ data: { users } }) => {
+    return users;
+  });
+};
+
+export const getUser = (user) => {
+  return newsApi.get(`users/${user}`).then(({ data: { user } }) => {
+    return user;
+  });
+};
