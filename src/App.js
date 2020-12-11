@@ -13,6 +13,7 @@ export const UserContext = React.createContext();
 class App extends React.Component {
   state = {
     loggedInUser: {
+      isLoggedIn: true,
       username: "cooljmessy",
       name: "Peter Messy",
       avatar_url:
@@ -28,7 +29,11 @@ class App extends React.Component {
           <Nav />
           <Router primary={false}>
             <Articles path="/" />
-            <UserPage path="/user" updateUser={this.updateUser} />
+            <UserPage
+              path="/user"
+              updateUser={this.updateUser}
+              user={loggedInUser}
+            />
             <Articles path="/articles/topics/:topic_slug" />
             <Article path="/articles/:article_id" user={loggedInUser} />
             <ErrorMessage default errMessage="404: Page Not Found" />

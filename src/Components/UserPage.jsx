@@ -10,6 +10,7 @@ class UserPage extends React.Component {
     selectedUser: "tickle122",
     users: [],
     user: {
+      isLoggedIn: true,
       username: "cooljmessy",
       name: "Peter Messy",
       avatar_url:
@@ -21,15 +22,16 @@ class UserPage extends React.Component {
 
   componentDidMount() {
     getUsers().then((users) => {
-      this.setState({ users, isLoading: false });
+      this.setState({ users, isLoading: false, user: this.props.user });
     });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     getUser(this.state.selectedUser).then((user) => {
+      user.isLoggedIn = true;
       this.setState({ user, isLoggedIn: true });
-      this.props.updateUser(user);
+      this.props.updateUser({ ...user });
     });
   };
 
@@ -39,7 +41,8 @@ class UserPage extends React.Component {
   };
 
   logout = () => {
-    this.setState({ isLoggedIn: false, user: {} });
+    this.setState({ user: { isLoggedIn: false }, isLoggedIn: false });
+    this.props.updateUser({ ...this.state.user, isLoggedIn: false });
   };
 
   render() {

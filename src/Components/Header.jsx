@@ -4,7 +4,7 @@ import { UserContext } from "../App";
 import { useContext } from "react";
 
 function Header() {
-  const { name } = useContext(UserContext);
+  const { name, isLoggedIn } = useContext(UserContext);
 
   return (
     <header>
@@ -14,7 +14,7 @@ function Header() {
         {generateGreeting()}
         <span className="wrap">
           <Link className="user" to="/user">
-            {name.split(" ")[0]}
+            {isLoggedIn ? name.split(" ")[0] : "Login"}
           </Link>
         </span>
       </h2>
