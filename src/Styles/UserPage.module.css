@@ -1,5 +1,5 @@
 .userPage {
-  animation: fadeInAnimation ease 3s;
+  animation: fadeInAnimation ease 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   min-height: 80vh;
@@ -51,7 +51,7 @@
 .modal {
   margin-top: 50px;
   font-size: 1rem;
-  min-height: 70vh;
+
   background: #e1e2e2;
   border: 3px solid#fb8122;
 }

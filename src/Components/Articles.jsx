@@ -1,5 +1,5 @@
 import React from "react";
-import { getArticles } from "./api";
+import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import FilterArticles from "./FilterArticles";

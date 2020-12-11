@@ -1,5 +1,5 @@
 import React from "react";
-import { getArticleComments } from "./api";
+import { getArticleComments } from "../api";
 import CommentCard from "./CommentCard";
 import PostComment from "./PostComment";
 import Loading from "./Loading";
@@ -27,11 +27,13 @@ class AllComments extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const newComment = prevState.commentAdded !== this.state.commentAdded;
     if (newComment) {
-      getArticleComments(this.props.id, "created_at", "desc").then(
-        (comments) => {
+      getArticleComments(this.props.id, "created_at", "desc")
+        .then((comments) => {
           this.setState({ comments, commentAdded: false });
-        }
-      );
+        })
+        .catch((err) => {
+          this.setState({ isLoading: false });
+        });
     }
   }
 

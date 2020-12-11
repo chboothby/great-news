@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTopics, postArticle } from "./api";
+import { getTopics, postArticle } from "../api";
 import { Link } from "@reach/router";
 import styles from "../Styles/UserPage.module.css";
 
@@ -15,18 +15,16 @@ function PostArticle({ user }) {
     getTopics().then((topics) => {
       setTopics(topics);
     });
-  }, [topics, articleCreated]);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     postArticle(user, topic, title, body)
       .then((article_id) => {
-        console.log(article_id);
         setArticle(article_id);
         setTopic("");
         setBody("");
         setTitle("");
-        console.log(articleCreated);
       })
       .catch(({ response: { status, statusText } }) => {
         setErrMess(
@@ -46,7 +44,9 @@ function PostArticle({ user }) {
     return (
       <div>
         <p>Successfully posted your article!</p>
-        <Link to={`/articles/${articleCreated}`}>view it here</Link>
+        <Link className="link" to={`/articles/${articleCreated}`}>
+          View it here
+        </Link>
       </div>
     );
   } else if (!articleCreated) {

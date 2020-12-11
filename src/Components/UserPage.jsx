@@ -1,5 +1,5 @@
 import React from "react";
-import { getUsers, getUser } from "./api";
+import { getUsers, getUser } from "../api";
 import Loading from "./Loading";
 import styles from "../Styles/UserPage.module.css";
 import PostArticle from "./PostArticle";

@@ -1,5 +1,5 @@
 import moment from "moment";
-import { removeComment } from "./api";
+import { removeComment } from "../api";
 import styles from "../Styles/Comments.module.css";
 import CommentVotes from "./CommentVotes";
 import { useContext } from "react";

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../App";
 import styles from "../Styles/PostComment.module.css";
-import { postComment } from "./api";
+import { postComment } from "../api";
 
 function PostComment({ addComment, id, removeComment }) {
   const [comment, setComment] = useState("");

@@ -1,6 +1,6 @@
 import { FiHeart, FiThumbsDown, FiThumbsUp } from "react-icons/fi";
 import { useState } from "react";
-import { addVote } from "./api";
+import { addVote } from "../api";
 import styled from "styled-components";
 import styles from "../Styles/Article.module.css";
 

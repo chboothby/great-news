@@ -1,6 +1,6 @@
 import { Link } from "@reach/router";
 import { useEffect, useState } from "react";
-import { getTopics } from "./api";
+import { getTopics } from "../api";
 import styles from "../Styles/Nav.module.css";
 import { FiHome } from "react-icons/fi";
 
@@ -11,7 +11,7 @@ function Nav() {
     getTopics().then((response) => {
       setTopics(response);
     });
-  }, [topics]);
+  }, []);
 
   return (
     <nav className={styles.navBar}>

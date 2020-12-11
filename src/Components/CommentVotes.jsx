@@ -2,7 +2,7 @@ import styles from "../Styles/Comments.module.css";
 import { useState } from "react";
 import styled from "styled-components";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
-import { addCommentVote } from "./api";
+import { addCommentVote } from "../api";
 
 const Button = styled.button`
   border: none;

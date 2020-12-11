@@ -1,4 +1,4 @@
-import { deleteArticle, getArticleById } from "./api";
+import { deleteArticle, getArticleById } from "../api";
 import Loading from "./Loading";
 import { BiCommentDetail, BiUpvote } from "react-icons/bi";
 import Voting from "./Voting";
@@ -35,9 +35,17 @@ class Article extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const newProps = prevProps.article_id !== this.props.article_id;
     if (newProps) {
-      getArticleById(this.props.article_id).then((article) => {
-        this.setState({ article });
-      });
+      getArticleById(this.props.article_id)
+        .then((article) => {
+          this.setState({ article });
+        })
+        .catch(({ response: { status, statusText } }) => {
+          this.setState({
+            isLoading: false,
+            hasError: true,
+            errMessage: `${status}: ${statusText}`,
+          });
+        });
     }
   }
 
@@ -47,7 +55,9 @@ class Article extends React.Component {
       return (
         <h3>
           Successfully deleted your article. Return to{" "}
-          <Link to="/">homepage</Link>
+          <Link className="link" to="/">
+            homepage
+          </Link>
         </h3>
       );
     }

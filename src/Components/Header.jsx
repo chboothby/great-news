@@ -1,10 +1,10 @@
 import { Link } from "@reach/router";
-import { generateGreeting, todaysDate } from "./utils";
+import { generateGreeting, todaysDate } from "../utils";
 import { UserContext } from "../App";
 import { useContext } from "react";
 
 function Header() {
-  const { name, isLoggedIn } = useContext(UserContext);
+  const { username, isLoggedIn } = useContext(UserContext);
 
   return (
     <header>
@@ -14,7 +14,7 @@ function Header() {
         {generateGreeting()}
         <span className="wrap">
           <Link className="user" to="/user">
-            {isLoggedIn ? name.split(" ")[0] : "Login"}
+            {isLoggedIn ? username : "Login"}
           </Link>
         </span>
       </h2>

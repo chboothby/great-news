@@ -4,7 +4,7 @@
   max-width: 800px;
   margin: 8px auto;
   border: 3px solid #003844;
-  animation: fadeInAnimation ease 2s;
+  animation: fadeInAnimation ease 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }

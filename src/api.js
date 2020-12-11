@@ -16,6 +16,7 @@ export const getArticles = (topic, order, sort_by) => {
         topic,
         order,
         sort_by,
+        limit: 10000,
       },
     })
     .then(({ data: { articles } }) => {

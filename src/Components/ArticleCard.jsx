@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPreview } from "./api";
+import { getPreview } from "../api";
 import styles from "../Styles/ArticleCard.module.css";
 import { Link } from "@reach/router";
 import { BiCommentDetail, BiUpvote } from "react-icons/bi";
@@ -12,7 +12,7 @@ function ArticleCard({ article }) {
     getPreview(article.article_id).then((preview) => {
       setPreview(preview);
     });
-  });
+  }, [article.article_id]);
 
   return (
     <li className={styles.articleCard} key={`${article.article_id}`}>
@@ -37,19 +37,21 @@ function ArticleCard({ article }) {
         </p>
       </section>
       <section className={styles.articleMetrics}>
-        <ul>
-          <li>
-            <p>
-              <BiUpvote />
-              {article.votes}
-            </p>
-          </li>
-          <li>
-            <p>
-              <BiCommentDetail /> {article.comment_count}
-            </p>
-          </li>
-        </ul>
+        <Link className={styles.link} to={`/articles/${article.article_id}`}>
+          <ul>
+            <li>
+              <p>
+                <BiUpvote />
+                {article.votes}
+              </p>
+            </li>
+            <li>
+              <p>
+                <BiCommentDetail /> {article.comment_count}
+              </p>
+            </li>
+          </ul>
+        </Link>
       </section>
     </li>
   );
