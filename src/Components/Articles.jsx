@@ -4,7 +4,7 @@ import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import FilterArticles from "./FilterArticles";
 import ErrorMessage from "./ErrorMessage";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import PageNav from "./PageNav";
 
 class Articles extends React.Component {
   state = {
@@ -71,46 +71,11 @@ class Articles extends React.Component {
           })}
         </ul>
 
-        {currentPage === 1 ? (
-          <div className="pages">
-            <button
-              onClick={() => {
-                this.nextPage(1);
-              }}
-            >
-              <FaArrowRight />
-            </button>
-          </div>
-        ) : lastPage ? (
-          <div className="pages">
-            {" "}
-            <button
-              onClick={() => {
-                this.nextPage(-1);
-              }}
-            >
-              <FaArrowLeft />
-            </button>
-          </div>
-        ) : (
-          <div className="pages">
-            {" "}
-            <button
-              onClick={() => {
-                this.nextPage(-1);
-              }}
-            >
-              <FaArrowLeft />
-            </button>
-            <button
-              onClick={() => {
-                this.nextPage(1);
-              }}
-            >
-              <FaArrowRight />
-            </button>
-          </div>
-        )}
+        <PageNav
+          lastPage={lastPage}
+          currentPage={currentPage}
+          nextPage={this.nextPage}
+        />
       </section>
     );
   }
@@ -138,29 +103,31 @@ class Articles extends React.Component {
   };
 
   nextPage = (num) => {
-    window.scrollTo(0, 0);
     const { order, sort_by, currentPage } = this.state;
-    this.setState(({ currentPage }) => {
-      return {
-        currentPage: currentPage + num,
-      };
-    });
-    getArticles(this.props.topic_slug, order, sort_by, currentPage + num)
-      .then((articles) => {
-        if (articles.length < 10) {
-          this.setState({ lastPage: true });
-        }
-        this.setState({ articles, lastPage: false });
-      })
-      .catch((err) => {
-        console.log(err);
-        this.setState(({ currentPage }) => {
-          return {
-            lastPage: true,
-            currentPage: currentPage - num,
-          };
-        });
-      });
+    window.scrollTo(0, 0);
+    this.setState(
+      ({ currentPage }) => {
+        return {
+          currentPage: currentPage + num,
+        };
+      },
+      () => {
+        getArticles(this.props.topic_slug, order, sort_by, currentPage + num)
+          .then((articles) => {
+            if (articles.length < 10) {
+              this.setState({ lastPage: true, articles });
+            } else this.setState({ articles, lastPage: false });
+          })
+          .catch((err) => {
+            this.setState(({ currentPage }) => {
+              return {
+                lastPage: true,
+                currentPage: currentPage - num,
+              };
+            });
+          });
+      }
+    );
   };
 }
 

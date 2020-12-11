@@ -4,6 +4,7 @@ import CommentCard from "./CommentCard";
 import PostComment from "./PostComment";
 import Loading from "./Loading";
 import styles from "../Styles/Comments.module.css";
+import PageNav from "./PageNav";
 
 class AllComments extends React.Component {
   state = {
@@ -12,13 +13,17 @@ class AllComments extends React.Component {
     sort_by: "created_at",
     order: "desc",
     commentAdded: false,
+    currentPage: 1,
+    lastPage: false,
   };
 
   componentDidMount() {
-    const { sort_by, order } = this.state;
-    getArticleComments(this.props.id, sort_by, order)
+    const { sort_by, order, currentPage } = this.state;
+    getArticleComments(this.props.id, sort_by, order, currentPage)
       .then((comments) => {
-        this.setState({ comments, isLoading: false });
+        if (comments.length < 10) {
+          this.setState({ comments, isLoading: false, lastPage: true });
+        } else this.setState({ comments, isLoading: false });
       })
       .catch((err) => {
         this.setState({ isLoading: false });
@@ -54,7 +59,7 @@ class AllComments extends React.Component {
   };
 
   render() {
-    const { comments, isLoading } = this.state;
+    const { comments, isLoading, currentPage, lastPage } = this.state;
 
     return (
       <div>
@@ -84,6 +89,11 @@ class AllComments extends React.Component {
         ) : (
           <CommentCard comments={comments} deleteComment={this.deleteComment} />
         )}
+        <PageNav
+          currentPage={currentPage}
+          lastPage={lastPage}
+          nextPage={this.nextPage}
+        />
       </div>
     );
   }
@@ -123,6 +133,35 @@ class AllComments extends React.Component {
         }),
       };
     });
+  };
+
+  nextPage = (num) => {
+    const { order, sort_by, currentPage } = this.state;
+    window.scrollTo(0, 0);
+    this.setState(
+      ({ currentPage }) => {
+        return {
+          currentPage: currentPage + num,
+        };
+      },
+      () => {
+        getArticleComments(this.props.id, sort_by, order, currentPage + num)
+          .then((comments) => {
+            console.log(comments);
+            if (comments.length < 10) {
+              this.setState({ lastPage: true, comments });
+            } else this.setState({ comments, lastPage: false });
+          })
+          .catch((err) => {
+            this.setState(({ currentPage }) => {
+              return {
+                lastPage: true,
+                currentPage: currentPage - num,
+              };
+            });
+          });
+      }
+    );
   };
 }
 

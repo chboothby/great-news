@@ -46,9 +46,11 @@ export const addVote = (article_id, votes) => {
   return newsApi.patch(`/articles/${article_id}`, { inc_votes: votes });
 };
 
-export const getArticleComments = (article_id, sort_by, order) => {
+export const getArticleComments = (article_id, sort_by, order, page) => {
   return newsApi
-    .get(`/articles/${article_id}/comments`, { params: { sort_by, order } })
+    .get(`/articles/${article_id}/comments`, {
+      params: { sort_by, order, page },
+    })
     .then(({ data: { comments } }) => {
       return comments;
     });
