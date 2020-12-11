@@ -16,9 +16,13 @@ class AllComments extends React.Component {
 
   componentDidMount() {
     const { sort_by, order } = this.state;
-    getArticleComments(this.props.id, sort_by, order).then((comments) => {
-      this.setState({ comments, isLoading: false });
-    });
+    getArticleComments(this.props.id, sort_by, order)
+      .then((comments) => {
+        this.setState({ comments, isLoading: false });
+      })
+      .catch((err) => {
+        this.setState({ isLoading: false });
+      });
   }
   componentDidUpdate(prevProps, prevState) {
     const newComment = prevState.commentAdded !== this.state.commentAdded;
@@ -49,9 +53,7 @@ class AllComments extends React.Component {
 
   render() {
     const { comments, isLoading } = this.state;
-    if (isLoading) {
-      return <Loading />;
-    }
+
     return (
       <div>
         <PostComment
@@ -61,6 +63,7 @@ class AllComments extends React.Component {
         />
         <div className={styles.commentsHeader}>
           <h3>All Comments</h3>
+
           <form
             onChange={this.handleChange}
             className={styles.commentFilter}
@@ -74,7 +77,11 @@ class AllComments extends React.Component {
             <button type="submit">Sort</button>
           </form>
         </div>
-        <CommentCard comments={comments} deleteComment={this.deleteComment} />
+        {isLoading ? (
+          <Loading items={"comments"} />
+        ) : (
+          <CommentCard comments={comments} deleteComment={this.deleteComment} />
+        )}
       </div>
     );
   }

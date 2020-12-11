@@ -29,7 +29,7 @@ class App extends React.Component {
           <Router primary={false}>
             <Articles path="/" />
             <UserPage path="/user" updateUser={this.updateUser} />
-            <Articles path="/articles/topics/:topic_slug" user={loggedInUser} />
+            <Articles path="/articles/topics/:topic_slug" />
             <Article path="/articles/:article_id" user={loggedInUser} />
             <ErrorMessage default errMessage="404: Page Not Found" />
           </Router>

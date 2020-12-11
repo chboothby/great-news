@@ -104,6 +104,8 @@ p {
   margin: 0.5rem;
   border-radius: 20%;
   transition: all 0.3s ease-in-out;
+
+  color: #fb8122;
 }
 
 .user:visited {

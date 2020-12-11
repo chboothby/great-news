@@ -29,7 +29,7 @@ class Articles extends React.Component {
   render() {
     const { articles, isLoading } = this.state;
     if (isLoading) {
-      return <Loading />;
+      return <Loading items={"articles"} />;
     }
     return (
       <section className="main">
