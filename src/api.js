@@ -9,14 +9,15 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = (topic, order, sort_by) => {
+export const getArticles = (topic, order, sort_by, page = 1) => {
   return newsApi
     .get("/articles", {
       params: {
         topic,
         order,
         sort_by,
-        limit: 10000,
+        limit: 10,
+        page,
       },
     })
     .then(({ data: { articles } }) => {

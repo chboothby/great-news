@@ -147,3 +147,23 @@ p {
     font-size: 3rem;
   }
 }
+.pages {
+  margin: 0 auto;
+}
+.pages button {
+  font-size: 2rem;
+  color: #fb8122;
+  margin: 0.2rem;
+}
+
+.pages button:hover {
+  color: #1d2228;
+}
+
+button {
+  outline: none;
+}
+
+select {
+  font-size: 0.9rem;
+}
