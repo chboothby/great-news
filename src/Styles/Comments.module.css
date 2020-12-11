@@ -36,3 +36,37 @@
     margin-left: 0;
   }
 }
+
+.modal {
+  margin-top: 50px;
+  font-size: 1rem;
+  min-width: 200px;
+  background: #e1e2e2;
+  border: 3px solid#fb8122;
+}
+
+.modal .header {
+  width: 100%;
+  border-bottom: 1px solid#fb8122;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 5px;
+}
+.modal .content {
+  padding: 10px 5px;
+}
+
+.modal .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 4px 5px;
+  line-height: 20px;
+  right: -20px;
+  top: 40px;
+  font-size: 2rem;
+  background: #2c2526;
+  border-radius: 18px;
+  border: 2px solid #fb8122;
+  outline: none;
+}
