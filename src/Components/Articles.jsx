@@ -3,19 +3,31 @@ import { getArticles } from "./api";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import FilterArticles from "./FilterArticles";
+import ErrorMessage from "./ErrorMessage";
 
 class Articles extends React.Component {
   state = {
     articles: [],
     isLoading: true,
+    hasError: false,
+    errMessage: "",
   };
   componentDidMount() {
     const topic = this.props.topic_slug;
+
     console.log(topic);
-    getArticles(topic).then((articles) => {
-      console.log(articles);
-      this.setState({ articles, isLoading: false });
-    });
+    getArticles(topic)
+      .then((articles) => {
+        console.log(articles);
+        this.setState({ articles, isLoading: false });
+      })
+      .catch(({ response: { status, statusText } }) => {
+        this.setState({
+          isLoading: false,
+          hasError: true,
+          errMessage: `${status}: ${statusText}`,
+        });
+      });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -27,9 +39,12 @@ class Articles extends React.Component {
     }
   }
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, hasError, errMessage } = this.state;
     if (isLoading) {
       return <Loading items={"articles"} />;
+    }
+    if (hasError) {
+      return <ErrorMessage errMessage={errMessage} />;
     }
     return (
       <section className="main">
