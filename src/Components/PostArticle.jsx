@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTopics, postArticle } from "./api";
 import { Link } from "@reach/router";
+import styles from "../Styles/UserPage.module.css";
 
 function PostArticle({ user }) {
   const [topics, setTopics] = useState([]);
@@ -20,10 +21,12 @@ function PostArticle({ user }) {
     event.preventDefault();
     postArticle(user, topic, title, body)
       .then((article_id) => {
+        console.log(article_id);
         setArticle(article_id);
         setTopic("");
         setBody("");
         setTitle("");
+        console.log(articleCreated);
       })
       .catch(({ response: { status, statusText } }) => {
         setErrMess(
@@ -48,27 +51,31 @@ function PostArticle({ user }) {
     );
   } else if (!articleCreated) {
     return (
-      <form onChange={handleChange} onSubmit={handleSubmit}>
-        <label>
-          Article Title:<input value={title} id="title" type="search"></input>
+      <form
+        className={styles.form}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      >
+        <label className={styles.input}>
+          Article Title:
+          <input required value={title} id="title" type="search"></input>
         </label>
-        <label>
+        <label className={styles.input}>
           Topic:
-          <select id="topic">
+          <select required id="topic">
             <option>Select topic</option>
             {topics.map(({ slug }) => {
               return <option key={slug}>{slug}</option>;
             })}
           </select>
         </label>
-        <label>
-          Body:
-          <textarea
-            value={body}
-            id="body"
-            placeholder="Write your article in here..."
-          ></textarea>
-        </label>
+        <textarea
+          required
+          className={styles.input}
+          value={body}
+          id="body"
+          placeholder="Write your article in here..."
+        ></textarea>
         <button type="submit">Submit</button>
         {hasError ? <p>{hasError}</p> : null}
       </form>

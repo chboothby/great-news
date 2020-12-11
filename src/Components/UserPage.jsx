@@ -3,6 +3,7 @@ import { getUsers, getUser } from "./api";
 import Loading from "./Loading";
 import styles from "../Styles/UserPage.module.css";
 import PostArticle from "./PostArticle";
+import Popup from "reactjs-popup";
 
 class UserPage extends React.Component {
   state = {
@@ -16,7 +17,6 @@ class UserPage extends React.Component {
     },
     isLoading: true,
     isLoggedIn: true,
-    postArticle: false,
   };
 
   componentDidMount() {
@@ -43,7 +43,7 @@ class UserPage extends React.Component {
   };
 
   render() {
-    const { user, users, isLoading, isLoggedIn, postArticle } = this.state;
+    const { user, users, isLoading, isLoggedIn } = this.state;
     if (isLoading) {
       return <Loading />;
     }
@@ -55,15 +55,25 @@ class UserPage extends React.Component {
               <h3>{user.name}</h3>
               <img src={user.avatar_url} alt={`${user.name}'s avatar`}></img>
               <h4>Username: {user.username}</h4>
-              <button
-                onClick={() => {
-                  this.setState({ postArticle: true });
-                }}
+              <Popup
+                trigger={<button className="button"> Post new article </button>}
+                modal
+                nested
               >
-                Post Article
-              </button>
+                {(close) => (
+                  <div className={styles.modal}>
+                    <button className={styles.close} onClick={close}>
+                      &times;
+                    </button>
+                    <div className={styles.header}> Post new article </div>
+                    <div className={styles.content}>
+                      <PostArticle user={user.username} />
+                    </div>
+                  </div>
+                )}
+              </Popup>
+
               <button onClick={this.logout}>Logout</button>
-              {postArticle ? <PostArticle user={user.username} /> : null}
             </div>
           </div>
         </section>

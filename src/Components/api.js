@@ -82,7 +82,7 @@ export const removeComment = (comment_id) => {
 export const postArticle = (author, topic, title, body) => {
   return newsApi
     .post("/articles", { author, title, topic, body })
-    .then((response) => {
-      console.log(response);
+    .then(({ data: { article } }) => {
+      return article.article_id;
     });
 };
