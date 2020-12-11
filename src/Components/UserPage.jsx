@@ -37,7 +37,6 @@ class UserPage extends React.Component {
 
   handleChange = ({ target: { value } }) => {
     this.setState({ selectedUser: value });
-    console.log(value);
   };
 
   logout = () => {

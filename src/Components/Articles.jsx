@@ -14,11 +14,8 @@ class Articles extends React.Component {
   };
   componentDidMount() {
     const topic = this.props.topic_slug;
-
-    console.log(topic);
     getArticles(topic)
       .then((articles) => {
-        console.log(articles);
         this.setState({ articles, isLoading: false });
       })
       .catch(({ response: { status, statusText } }) => {
@@ -40,6 +37,7 @@ class Articles extends React.Component {
   }
   render() {
     const { articles, isLoading, hasError, errMessage } = this.state;
+    const { topic_slug } = this.props;
     if (isLoading) {
       return <Loading items={"articles"} />;
     }
@@ -47,7 +45,11 @@ class Articles extends React.Component {
       return <ErrorMessage errMessage={errMessage} />;
     }
     return (
-      <section className="main">
+      <section>
+        <div className="topic">
+          {topic_slug ? <h2>{topic_slug}</h2> : <h2>All </h2>}
+        </div>
+
         <FilterArticles filterArticles={this.filterArticles} />
         <div className="popular"></div>
         <ul>

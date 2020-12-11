@@ -90,6 +90,13 @@ strong {
   color: #fb8122;
   font-weight: bolder;
 }
+.topic {
+  text-align: left;
+  float: left;
+  font-size: 1rem;
+  text-transform: capitalize;
+  padding-left: 2.5rem;
+}
 h3 {
   text-decoration: dashed overline #fb8122;
 }
@@ -122,5 +129,8 @@ p {
   .App {
     padding: 0;
     margin: 0;
+  }
+  h1 {
+    font-size: 4rem;
   }
 }

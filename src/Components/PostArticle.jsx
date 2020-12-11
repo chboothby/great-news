@@ -51,18 +51,20 @@ function PostArticle({ user }) {
     );
   } else if (!articleCreated) {
     return (
-      <form
-        className={styles.form}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-      >
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.input}>
           Article Title:
-          <input required value={title} id="title" type="search"></input>
+          <input
+            onChange={handleChange}
+            required
+            value={title}
+            id="title"
+            type="search"
+          ></input>
         </label>
         <label className={styles.input}>
           Topic:
-          <select required id="topic">
+          <select onChange={handleChange} required id="topic">
             <option>Select topic</option>
             {topics.map(({ slug }) => {
               return <option key={slug}>{slug}</option>;
@@ -71,6 +73,7 @@ function PostArticle({ user }) {
         </label>
         <textarea
           required
+          onChange={handleChange}
           className={styles.input}
           value={body}
           id="body"
