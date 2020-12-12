@@ -42,20 +42,17 @@ class AllComments extends React.Component {
     }
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { sort_by, order } = this.state;
-    getArticleComments(this.props.id, sort_by, order).then((comments) => {
-      this.setState({ comments });
-    });
-  };
-
-  handleChange = ({ target: { value } }) => {
-    value === "Oldest"
+  handleChange = async ({ target: { value } }) => {
+    (await value) === "Oldest"
       ? this.setState({ sort_by: "created_at", order: "asc" })
       : value === "Popularity"
       ? this.setState({ sort_by: "votes", order: "desc" })
       : this.setState({ sort_by: "created_at", order: "desc" });
+
+    const { sort_by, order } = this.state;
+    getArticleComments(this.props.id, sort_by, order).then((comments) => {
+      this.setState({ comments });
+    });
   };
 
   render() {
@@ -71,17 +68,12 @@ class AllComments extends React.Component {
         <div className={styles.commentsHeader}>
           <h3>All Comments</h3>
 
-          <form
-            onChange={this.handleChange}
-            className={styles.commentFilter}
-            onSubmit={this.handleSubmit}
-          >
+          <form onChange={this.handleChange} className={styles.commentFilter}>
             <select>
               <option>Most recent</option>
               <option>Oldest</option>
               <option>Popularity</option>
             </select>
-            <button type="submit">Sort</button>
           </form>
         </div>
         {isLoading ? (
@@ -137,7 +129,7 @@ class AllComments extends React.Component {
 
   nextPage = (num) => {
     const { order, sort_by, currentPage } = this.state;
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 1100);
     this.setState(
       ({ currentPage }) => {
         return {
@@ -147,7 +139,6 @@ class AllComments extends React.Component {
       () => {
         getArticleComments(this.props.id, sort_by, order, currentPage + num)
           .then((comments) => {
-            console.log(comments);
             if (comments.length < 10) {
               this.setState({ lastPage: true, comments });
             } else this.setState({ comments, lastPage: false });

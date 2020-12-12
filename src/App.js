@@ -6,6 +6,7 @@ import Articles from "./Components/Articles";
 import Article from "./Components/Article";
 import UserPage from "./Components/UserPage";
 import ErrorMessage from "./Components/ErrorMessage";
+import Footer from "./Components/Footer";
 import { Router } from "@reach/router";
 
 export const UserContext = React.createContext();
@@ -38,14 +39,8 @@ class App extends React.Component {
             <Article path="/articles/:article_id" user={loggedInUser} />
             <ErrorMessage default errMessage="404: Page Not Found" />
           </Router>
-          <button
-            onClick={() => {
-              window.scrollTo(0, 0);
-            }}
-          >
-            Back to top
-          </button>
         </div>
+        <Footer />
       </UserContext.Provider>
     );
   }

@@ -14,7 +14,7 @@ class Articles extends React.Component {
     errMessage: "",
     currentPage: 1,
     sort_by: "created_at",
-    order: "desc",
+    order: "asc",
     lastPage: false,
   };
   componentDidMount() {
@@ -59,11 +59,14 @@ class Articles extends React.Component {
     }
     return (
       <section>
-        <div className="topic">
-          {topic_slug ? <h2>{topic_slug}</h2> : <h2>All </h2>}
+        <div className="articleBar">
+          <div className="topic">
+            {topic_slug ? <h2>{topic_slug}</h2> : <h2>All </h2>}
+          </div>
+
+          <FilterArticles filterArticles={this.filterArticles} />
         </div>
 
-        <FilterArticles filterArticles={this.filterArticles} />
         <div className="popular"></div>
         <ul>
           {articles.map((article) => {
@@ -83,7 +86,7 @@ class Articles extends React.Component {
   filterArticles = (filter) => {
     let { order, sort_by } = this.state;
     if (filter === "Oldest") {
-      order = "asc";
+      order = "desc";
       sort_by = "created_at";
     }
     if (filter === "Most popular") {
@@ -91,7 +94,7 @@ class Articles extends React.Component {
       order = "desc";
     }
     if (filter === "Most recent") {
-      order = "desc";
+      order = "asc";
       sort_by = "created_at";
     }
 
