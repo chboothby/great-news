@@ -25,56 +25,114 @@ function Voting({ incVotes, id }) {
   const [superLike, setSuperLike] = useState(false);
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
+  const [currentVote, setVote] = useState(0);
 
   const handleClick = (num) => {
     if (num === 10) {
-      if (!superLike && !like && !dislike) {
-        incVotes(num);
-        setSuperLike(true);
-        addVote(id, num).catch(() => {
-          incVotes(-num);
-          setSuperLike(false);
-        });
-      } else if (superLike) {
+      if (superLike) {
         incVotes(-num);
         setSuperLike(false);
+        setVote(0);
         addVote(id, -num).catch(() => {
           incVotes(num);
           setSuperLike(true);
+          setVote(num);
+        });
+      } else {
+        let prevVote = currentVote;
+        incVotes(-prevVote);
+        incVotes(num);
+        setSuperLike(true);
+        setDislike(false);
+        setLike(false);
+        setVote(num);
+        Promise.all([addVote(id, num), addVote(id, -prevVote)]).catch(() => {
+          incVotes(prevVote);
+          incVotes(-num);
+          setSuperLike(false);
+          setVote(prevVote);
+          if (prevVote === 0) {
+            setLike(false);
+            setDislike(false);
+          }
+          if (prevVote === 1) {
+            setLike(true);
+            setDislike(false);
+          } else if (prevVote === -1) {
+            setLike(false);
+            setDislike(true);
+          }
         });
       }
     }
     if (num === 1) {
-      if (!like && !dislike && !superLike) {
-        incVotes(num);
-        setLike(true);
-        addVote(id, num).catch(() => {
-          incVotes(-num);
-          setLike(false);
-        });
-      } else if (like) {
+      if (like) {
         incVotes(-num);
         setLike(false);
+        setVote(0);
         addVote(id, -num).catch(() => {
           incVotes(num);
           setLike(true);
+          setVote(num);
+        });
+      } else {
+        let prevVote = currentVote;
+        incVotes(-prevVote);
+        incVotes(num);
+        setLike(true);
+        setDislike(false);
+        setSuperLike(false);
+        setVote(num);
+        Promise.all([addVote(id, num), addVote(id, -prevVote)]).catch(() => {
+          incVotes(prevVote);
+          incVotes(-num);
+          setLike(false);
+          setVote(prevVote);
+          if (prevVote === 10) {
+            setSuperLike(true);
+            setDislike(false);
+          } else if (prevVote === -1) {
+            setSuperLike(false);
+            setDislike(true);
+          } else {
+            setSuperLike(false);
+            setDislike(false);
+          }
         });
       }
-    }
-    if (num === -1) {
-      if (!dislike && !like && !superLike) {
-        incVotes(num);
-        setDislike(true);
-        addVote(id, num).catch(() => {
-          incVotes(-num);
-          setDislike(false);
-        });
-      } else if (dislike) {
+    } else if (num === -1) {
+      if (dislike) {
         incVotes(-num);
         setDislike(false);
+        setVote(0);
         addVote(id, -num).catch(() => {
           incVotes(num);
           setDislike(true);
+          setVote(num);
+        });
+      } else {
+        let prevVote = currentVote;
+        incVotes(-prevVote);
+        incVotes(num);
+        setLike(false);
+        setDislike(true);
+        setSuperLike(false);
+        setVote(num);
+        Promise.all([addVote(id, num), addVote(id, -prevVote)]).catch(() => {
+          incVotes(prevVote);
+          incVotes(-num);
+          setDislike(false);
+          setVote(prevVote);
+          if (prevVote === 10) {
+            setSuperLike(true);
+            setLike(false);
+          } else if (prevVote === 1) {
+            setSuperLike(false);
+            setLike(true);
+          } else {
+            setSuperLike(false);
+            setLike(false);
+          }
         });
       }
     }
