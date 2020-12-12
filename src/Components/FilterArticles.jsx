@@ -2,11 +2,18 @@ import styles from "../Styles/Comments.module.css";
 import { useState } from "react";
 
 function FilterArticles({ filterArticles }) {
-  const [filterBy, setFilter] = useState("");
-
   const handleChange = ({ target: { value } }) => {
-    setFilter(value);
-    filterArticles(filterBy);
+    let sort_by = "created_at";
+    let order = "desc";
+    if (value === "Oldest") {
+      sort_by = "created_at";
+      order = "asc";
+    } else if (value === "Most popular") {
+      sort_by = "votes";
+      order = "desc";
+    }
+
+    filterArticles(sort_by, order);
   };
 
   return (

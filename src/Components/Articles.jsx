@@ -83,25 +83,9 @@ class Articles extends React.Component {
     );
   }
 
-  filterArticles = (filter) => {
-    let { order, sort_by } = this.state;
-    if (filter === "Oldest") {
-      order = "desc";
-      sort_by = "created_at";
-    }
-    if (filter === "Most popular") {
-      sort_by = "votes";
-      order = "desc";
-    }
-    if (filter === "Most recent") {
-      order = "asc";
-      sort_by = "created_at";
-    }
-
-    this.setState({ order, sort_by }, () => {
-      getArticles(this.props.topic_slug, order, sort_by).then((articles) => {
-        this.setState({ articles });
-      });
+  filterArticles = (order, sort_by) => {
+    getArticles(this.props.id, sort_by, order).then((articles) => {
+      this.setState({ articles });
     });
   };
 
