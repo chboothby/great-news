@@ -1,5 +1,4 @@
 import styles from "../Styles/Comments.module.css";
-import { useState } from "react";
 
 function FilterArticles({ filterArticles }) {
   const handleChange = ({ target: { value } }) => {
@@ -18,11 +17,14 @@ function FilterArticles({ filterArticles }) {
 
   return (
     <form onChange={handleChange} className={styles.commentFilter}>
-      <select>
-        <option>Most recent</option>
-        <option>Oldest</option>
-        <option>Most popular</option>
-      </select>
+      <label>
+        Sort by:
+        <select id="sort-articles">
+          <option>Most recent</option>
+          <option>Oldest</option>
+          <option>Most popular</option>
+        </select>
+      </label>
     </form>
   );
 }

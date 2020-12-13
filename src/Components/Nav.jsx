@@ -19,11 +19,15 @@ function Nav() {
   };
   return (
     <nav className={styles.navBar}>
-      <Link to="/" className={styles.recent}>
+      <Link aria-label="home-button" to="/" className={styles.recent}>
         <FiHome />
       </Link>
       <section className={styles.menu}>
-        <button onClick={toggleNav} className={styles.toggle}>
+        <button
+          aria-label="drop-down-menu"
+          onClick={toggleNav}
+          className={styles.toggle}
+        >
           {isToggled ? <ImCross /> : <FiMenu />}
         </button>
         <div className={isToggled ? styles.isToggled : styles.topics}>

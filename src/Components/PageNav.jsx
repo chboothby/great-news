@@ -6,6 +6,7 @@ function PageNav({ currentPage, nextPage, lastPage }) {
       {currentPage === 1 && lastPage ? null : currentPage === 1 ? (
         <div className="pages">
           <button
+            aria-label="next-page"
             onClick={() => {
               nextPage(1);
             }}
@@ -15,8 +16,8 @@ function PageNav({ currentPage, nextPage, lastPage }) {
         </div>
       ) : lastPage ? (
         <div className="pages">
-          {" "}
           <button
+            aria-label="last-page"
             onClick={() => {
               nextPage(-1);
             }}
@@ -26,8 +27,8 @@ function PageNav({ currentPage, nextPage, lastPage }) {
         </div>
       ) : (
         <div className="pages">
-          {" "}
           <button
+            aria-label="last-page"
             onClick={() => {
               nextPage(-1);
             }}
@@ -35,6 +36,7 @@ function PageNav({ currentPage, nextPage, lastPage }) {
             <FaArrowLeft />
           </button>
           <button
+            aria-label="next-page"
             onClick={() => {
               nextPage(1);
             }}

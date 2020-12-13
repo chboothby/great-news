@@ -64,6 +64,7 @@ function CommentVotes({ comment }) {
   return (
     <div className={styles.commentVotes}>
       <Button
+        aria-label="upvote-comment"
         clicked={hasUpVoted}
         onClick={() => updateVotes(comment.comment_id, 1)}
       >
@@ -71,6 +72,7 @@ function CommentVotes({ comment }) {
       </Button>
       <p>{votes}</p>
       <Button
+        aria-label="downvote-comment"
         clicked={hasDownVoted}
         onClick={() => updateVotes(comment.comment_id, -1)}
       >

@@ -69,11 +69,14 @@ class AllComments extends React.Component {
           <h3>All Comments</h3>
 
           <form onChange={this.handleChange} className={styles.commentFilter}>
-            <select>
-              <option>Most recent</option>
-              <option>Oldest</option>
-              <option>Popularity</option>
-            </select>
+            <label>
+              Sort by:
+              <select id="sort-comments">
+                <option>Most recent</option>
+                <option>Oldest</option>
+                <option>Popularity</option>
+              </select>
+            </label>
           </form>
         </div>
         {isLoading ? (

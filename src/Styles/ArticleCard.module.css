@@ -35,10 +35,10 @@
 .link {
   font-size: 1.1rem;
   text-decoration: none;
-  color: #fb8122;
+  color: #003844;
 }
 .link:hover {
-  color: #003844;
+  color: #fb8122;
 }
 
 @media only screen and (max-width: 800px) {

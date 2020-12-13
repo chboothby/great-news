@@ -37,7 +37,11 @@ function ArticleCard({ article }) {
         </p>
       </section>
       <section className={styles.articleMetrics}>
-        <Link className={styles.link} to={`/articles/${article.article_id}`}>
+        <Link
+          aria-label={`link to article ${article.article_id}`}
+          className={styles.link}
+          to={`/articles/${article.article_id}`}
+        >
           <ul>
             <li>
               <p>

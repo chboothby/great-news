@@ -31,8 +31,7 @@ function CommentCard({ comments, deleteComment }) {
                 <Popup
                   trigger={
                     <button className={styles.deleteBtn}>
-                      {" "}
-                      Delete your comment{" "}
+                      Delete your comment
                     </button>
                   }
                   modal

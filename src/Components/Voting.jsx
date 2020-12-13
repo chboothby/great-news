@@ -141,6 +141,7 @@ function Voting({ incVotes, id }) {
   return (
     <section className={styles.voting}>
       <Button
+        aria-label="superlike-article"
         clicked={superLike}
         onClick={() => {
           handleClick(10);
@@ -149,6 +150,7 @@ function Voting({ incVotes, id }) {
         <FiHeart />
       </Button>
       <Button
+        aria-label="like-article"
         clicked={like}
         onClick={() => {
           handleClick(1);
@@ -157,6 +159,7 @@ function Voting({ incVotes, id }) {
         <FiThumbsUp />
       </Button>
       <Button
+        aria-label="dislike-article"
         clicked={dislike}
         onClick={() => {
           handleClick(-1);
