@@ -164,6 +164,7 @@ p {
 
 button {
   outline: none;
+  cursor: pointer;
 }
 
 select {
@@ -173,4 +174,8 @@ select {
 footer button {
   padding: 0.5rem;
   margin: 0.5rem;
+}
+
+select {
+  cursor: pointer;
 }
